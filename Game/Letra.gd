@@ -25,7 +25,7 @@ func _init(var c, var v):
 	face = load('res://letter_tiles/PNG/Box/'+value+'.png')
 	back = MemoriaController.cardBack
 	set_size(Vector2(20,20))
-	face = get_resized_texture(face,128,128)
+	face = get_resized_texture(face,92,130)
 	self.texture = face	
 	#set_normal_texture(face)
 	

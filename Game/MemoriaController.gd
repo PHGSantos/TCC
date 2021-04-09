@@ -15,8 +15,9 @@ func get_random_numbers(from, to, how_many):
 	var arr = Array()
 	for i in range(from,to):
 		arr.append(i)
+		print(i)
 	arr.shuffle()
-	arr.resize(how_many)
+	#arr.resize(how_many)
 	return arr
 
 func translateNumberToLetter(v):
@@ -78,11 +79,12 @@ func translateNumberToLetter(v):
 func fillDeck():
 	var n = 0
 	var max_n = 10
-	var arr = get_random_numbers(1,27, max_n)#dentre as 26, escolhe n_max
+	var arr = get_random_numbers(1,26, max_n)#dentre as 26, escolhe n_max
+	#print(arr.size()+1)
 	while n <=  arr.size():
 		var letra = translateNumberToLetter(arr[n-1])
 		deck.append(Letra.new('Blue','letter_'+letra))
-		#print(letra + str(arr[n-1]))
+		print(letra +'-'+ str(arr[n-1]))
 		n = n + 1
 	
 
