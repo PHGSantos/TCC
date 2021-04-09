@@ -1,3 +1,38 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Memoria" type="Node2D"]
+[ext_resource path="res://Memoria.gd" type="Script" id=1]
+
+[sub_resource type="ImageTexture" id=1]
+
+[node name="Memoria" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.240463, 0.597656, 0.388363, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grid" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -240.0
+columns = 13
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = SubResource( 1 )

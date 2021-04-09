@@ -8,15 +8,24 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "TextureRect",
+"class": "Letra",
+"language": "GDScript",
+"path": "res://Letra.gd"
+} ]
 _global_script_class_icons={
-
+"Letra": ""
 }
 
 [application]
 
 config/name="JogoTCC"
 config/icon="res://icon.png"
+
+[autoload]
+
+MemoriaController="*res://MemoriaController.gd"
 
 [display]
 
