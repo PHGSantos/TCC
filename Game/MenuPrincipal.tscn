@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://buttons/blue_button00.png" type="Texture" id=1]
-[ext_resource path="res://BtnJogar.gd" type="Script" id=2]
-[ext_resource path="res://Sair.gd" type="Script" id=3]
+[ext_resource path="res://J1.gd" type="Script" id=2]
+[ext_resource path="res://J2.gd" type="Script" id=3]
+[ext_resource path="res://J3.gd" type="Script" id=4]
+[ext_resource path="res://Icons/exitLeft.png" type="Texture" id=5]
+[ext_resource path="res://Icons/exitLeft2.png" type="Texture" id=6]
+[ext_resource path="res://Sair.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://OpenDyslexic/OpenDyslexic-Bold.otf"
@@ -14,60 +18,111 @@ font_data = SubResource( 1 )
 
 [node name="MenuPrincipal" type="Node2D"]
 
-[node name="Jogar" type="Button" parent="."]
-margin_left = 114.0
-margin_top = 168.0
-margin_right = 580.0
-margin_bottom = 282.0
+[node name="Label2" type="Label" parent="."]
+margin_left = 490.0
+margin_top = 52.0
+margin_right = 801.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 2 )
+text = "Nome do Jogo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="J1" type="Button" parent="."]
+margin_left = 414.0
+margin_top = 198.0
+margin_right = 879.0
+margin_bottom = 318.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Jogar"]
+[node name="Sprite" type="Sprite" parent="J1"]
 position = Vector2( 231, 59 )
 scale = Vector2( 2.46316, 2.42857 )
 texture = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="Jogar"]
+[node name="Label" type="Label" parent="J1"]
 margin_left = 158.0
 margin_top = 16.0
 margin_right = 312.0
 margin_bottom = 90.0
 custom_fonts/font = SubResource( 2 )
-text = "JOGAR"
+text = "JOGO 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sair" type="Button" parent="."]
-margin_left = 114.0
-margin_top = 394.0
-margin_right = 580.0
-margin_bottom = 508.0
+[node name="J2" type="Button" parent="."]
+margin_left = 416.0
+margin_top = 371.0
+margin_right = 881.0
+margin_bottom = 491.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Sair"]
+[node name="Sprite" type="Sprite" parent="J2"]
 position = Vector2( 231, 59 )
 scale = Vector2( 2.46316, 2.42857 )
 texture = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="Sair"]
-margin_left = 180.0
-margin_top = 18.0
-margin_right = 334.0
-margin_bottom = 92.0
+[node name="Label" type="Label" parent="J2"]
+margin_left = 158.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 90.0
 custom_fonts/font = SubResource( 2 )
-text = "SAIR"
+text = "JOGO 2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="mouse_entered" from="Jogar" to="Jogar" method="_on_Jogar_mouse_entered"]
-[connection signal="mouse_exited" from="Jogar" to="Jogar" method="_on_Jogar_mouse_exited"]
-[connection signal="pressed" from="Jogar" to="Jogar" method="_on_Jogar_pressed"]
-[connection signal="mouse_entered" from="Sair" to="Sair" method="_on_Jogar_mouse_entered"]
-[connection signal="mouse_exited" from="Sair" to="Sair" method="_on_Jogar_mouse_exited"]
-[connection signal="pressed" from="Sair" to="Sair" method="_on_Jogar_pressed"]
+
+[node name="J3" type="Button" parent="."]
+margin_left = 418.0
+margin_top = 548.0
+margin_right = 883.0
+margin_bottom = 668.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="J3"]
+position = Vector2( 231, 59 )
+scale = Vector2( 2.46316, 2.42857 )
+texture = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="J3"]
+margin_left = 158.0
+margin_top = 16.0
+margin_right = 324.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 2 )
+text = "JOGO 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sair" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="J1" to="J1" method="_on_J1_mouse_entered"]
+[connection signal="mouse_exited" from="J1" to="J1" method="_on_J1_mouse_exited"]
+[connection signal="pressed" from="J1" to="J1" method="_on_J1_pressed"]
+[connection signal="mouse_entered" from="J2" to="J2" method="_on_J2_mouse_entered"]
+[connection signal="mouse_exited" from="J2" to="J2" method="_on_J2_mouse_exited"]
+[connection signal="pressed" from="J2" to="J2" method="_on_J2_pressed"]
+[connection signal="mouse_entered" from="J3" to="J3" method="_on_J3_mouse_entered"]
+[connection signal="mouse_exited" from="J3" to="J3" method="_on_J3_mouse_exited"]
+[connection signal="pressed" from="J3" to="J3" method="_on_J3_pressed"]
+[connection signal="pressed" from="Sair" to="Sair" method="_on_Sair_pressed"]

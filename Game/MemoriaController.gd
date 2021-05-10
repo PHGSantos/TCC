@@ -92,7 +92,7 @@ func dealDeck():
 	var n = 0
 	if deck.empty() == false:
 		while n < deck.size():  
-			Memoria.get_node('grid').add_child(deck[n-1])
+#			Memoria.get_node('grid').add_child(deck[n-1])
 			n = n + 1
 	else:
 		print('ERROR: DECK IS EMPTY (MemoriaController.gd)')		
