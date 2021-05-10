@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready():
-#	var l = Letra.new('Blue', 'letter_A')
-#	$grid.add_child(l)
-	pass
+	var config = get_tree().get_root().find_node("j1_config",true, false)
+	config.connect("j1_config", self, "handleConfig")
+	
+func handleConfig():
+	print('ok')

@@ -80,7 +80,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="n_bat" type="SpinBox" parent="VBoxContainer/HBoxContainer2"]
+[node name="n_let" type="SpinBox" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 739.0
 margin_right = 813.0
 margin_bottom = 74.0
@@ -107,7 +107,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="n_bat" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
+[node name="tempo" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 426.0
 margin_right = 500.0
 margin_bottom = 74.0
