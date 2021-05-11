@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Scoop" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 260.0
+margin_bottom = 156.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

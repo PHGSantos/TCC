@@ -20,5 +20,5 @@ func _on_Comecar_pressed():
 	Configuracoes.set_j1_qtd_letras_bateria(l)
 	Configuracoes.set_j1_tempo_exibicao(t)
 	
-	get_tree().change_scene("res://Memoria.tscn")
+	get_tree().change_scene("res://Conners.tscn")
 	
