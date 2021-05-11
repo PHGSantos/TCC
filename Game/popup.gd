@@ -2,4 +2,5 @@ extends Control
 
 
 func _ready():
-	get_node("PopupMenu").show()
+#	get_node("PopupMenu").show()
+	pass

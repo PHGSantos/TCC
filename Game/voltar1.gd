@@ -18,6 +18,3 @@ func _on_Voltar_pressed():
 	$Sprite.modulate.b = 0.5
 	get_tree().change_scene("res://MenuPrincipal.tscn")
 
-
-func _on_Comecar_mouse_entered():
-	pass # Replace with function body.

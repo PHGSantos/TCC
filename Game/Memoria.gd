@@ -1,9 +1,6 @@
-extends Control
-
+extends Node2D
 
 func _ready():
-	var config = get_tree().get_root().find_node("j1_config",true, false)
-	config.connect("j1_config", self, "handleConfig")
-	
-func handleConfig():
-	print('ok')
+	print(Configuracoes.j1_qtd_baterias)
+	print(Configuracoes.j1_qtd_letras_bateria)
+	print(Configuracoes.j1_tempo_exibicao)

@@ -1,26 +1,24 @@
-extends Control
+extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+	get_node("VBoxContainer/HBoxContainer/n_bat").value = Configuracoes.j1_qtd_baterias
+	get_node("VBoxContainer/HBoxContainer2/n_let").value = Configuracoes.j1_qtd_letras_bateria
+	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j1_tempo_exibicao
+	
+	
 func _on_Comecar_pressed():
-	#$Sprite.modulate.r = 0.5
-	#$Sprite.modulate.g = 0.5
-	#$Sprite.modulate.b = 0.5
-	var n = get_tree().get_root.Value
-	print(n)
-	emit_signal("j1_config")
+	get_node("Comecar/Sprite").modulate.r = 0.5
+	get_node("Comecar/Sprite").modulate.g = 0.5
+	get_node("Comecar/Sprite").modulate.b = 0.5
+	
+	var configuracoes = get_node("/root/Configuracoes")
+	var n = get_node("VBoxContainer/HBoxContainer/n_bat").value
+	var l = get_node("VBoxContainer/HBoxContainer2/n_let").value
+	var t = get_node("VBoxContainer/HBoxContainer3/tempo").value
+		
+	Configuracoes.set_j1_qtd_baterias(n)
+	Configuracoes.set_j1_qtd_letras_bateria(l)
+	Configuracoes.set_j1_tempo_exibicao(t)
+	
 	get_tree().change_scene("res://Memoria.tscn")
+	

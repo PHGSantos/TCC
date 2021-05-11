@@ -7,9 +7,9 @@ var deck = Array()
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	fillDeck()
-	dealDeck()
-
+#	fillDeck()
+#	dealDeck()
+	pass
 
 func get_random_numbers(from, to, how_many):
 	var arr = Array()
