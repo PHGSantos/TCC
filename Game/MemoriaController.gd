@@ -2,7 +2,7 @@ extends Node
 
 #?
 onready var Memoria = get_node('/root/Memoria/')
-var cardBack = preload('res://letter_tiles/PNG/Blue/letter.png')
+#var cardBack = preload('res://letter_tiles/PNG/Blue/letter.png')
 var deck = Array()
 var rng = RandomNumberGenerator.new()
 

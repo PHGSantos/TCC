@@ -1,11 +1,11 @@
 extends TextureRect
-#extends TextureButton
+
 class_name Letra
 
 var color
 var value
 var face
-var back
+#var back
 
 func _ready():
 	pass
@@ -23,8 +23,8 @@ func _init(var c, var v):
 	value = v
 	#face = load('res://letter_tiles/PNG/'+color+'/'+value+'.png')
 	face = load('res://letter_tiles/PNG/Box/'+value+'.png')
-	back = MemoriaController.cardBack
-	set_size(Vector2(20,20))
+	#back = MemoriaController.cardBack
+	#set_size(Vector2(20,20))
 	face = get_resized_texture(face,92,130)
 	self.texture = face	
 	#set_normal_texture(face)
