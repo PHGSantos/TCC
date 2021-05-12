@@ -1,9 +1,9 @@
 extends Node2D
 
 func _ready():
-	get_node("VBoxContainer/HBoxContainer/n_img").value = Configuracoes.j1_qtd_baterias
-	get_node("VBoxContainer/HBoxContainer2/categoria").value = Configuracoes.j1_qtd_letras_bateria
-	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j1_tempo_exibicao
+	get_node("VBoxContainer/HBoxContainer/n_img").value = Configuracoes.j3_qtd_imagens
+	get_node("VBoxContainer/HBoxContainer2/categoria").value = Configuracoes.j3_categoria
+	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j3_tempo_exibicao
 	
 	
 func _on_Comecar_pressed():
