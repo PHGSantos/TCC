@@ -1,20 +1,24 @@
 extends Node2D
 
 var deck = Array()
+var displayValue = 10
+onready var timer = get_node("Countdown")
+onready var display = get_node("PlayerArea/display")
+var increase = false
+#Configuracoes.j1_tempo_exibicao
 
 func _ready():
-	#print(Configuracoes.j1_qtd_baterias)
-	#print(Configuracoes.j1_qtd_letras_bateria)
-	#print(Configuracoes.j1_tempo_exibicao)
 	listLetters()
 	displayAllLetters()
+	timer.set_wait_time(1)
+	timer.start()
+	
 
 func listLetters():
 	var n = 1
 	while (n <= 26):
 		var letra = translateNumberToLetter(n)
-		deck.append(Letra.new('Blue','letter_'+letra))
-		print(letra +'-'+ str(n))
+		deck.append(Letra.new('Blue','letter_'+letra,92,130))
 		n = n + 1
 	pass
 
@@ -82,3 +86,26 @@ func translateNumberToLetter(v):
 		return 'Z'
 	else:
 		return '$'	
+
+func resetScene():
+	deleteNode("PlayerArea/texto")
+	deleteNode("grid")
+
+func deleteNode(var tree_path):
+	var node = get_node(tree_path)
+	if(is_instance_valid(node)):
+		node.queue_free()
+
+
+func _on_Countdown_timeout():
+	if (displayValue == 0):
+		increase = true
+		get_tree().change_scene("res://Conners_pt2.tscn")
+		#resetScene()
+		
+	if(increase == false):
+		displayValue -= 1
+	else:
+		displayValue += 1
+		
+	display.set_text(str(displayValue))

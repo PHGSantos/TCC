@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://buttons/blue_boxCross.png" type="Texture" id=1]
+[ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Conners_pt2.gd" type="Script" id=3]
+[ext_resource path="res://buttons/blue_boxCheckmark.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 59
+font_data = ExtResource( 2 )
+
+[node name="Conners" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 800.0
+color = Color( 0.240463, 0.597656, 0.388363, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texto" type="Label" parent="."]
+margin_left = 354.0
+margin_top = 8.0
+margin_right = 961.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 1 )
+text = "A letra da vez é:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PlayerArea" type="ColorRect" parent="."]
+margin_top = 650.0
+margin_right = 1280.0
+margin_bottom = 800.0
+color = Color( 0.0784314, 0.494118, 0.894118, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="seg" type="Label" parent="PlayerArea"]
+margin_left = 1196.0
+margin_top = 20.0
+margin_right = 1270.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="min" type="Label" parent="PlayerArea"]
+margin_left = 1106.0
+margin_top = 20.0
+margin_right = 1180.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="div" type="Label" parent="PlayerArea"]
+margin_left = 1182.0
+margin_top = 20.0
+margin_right = 1256.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 1 )
+text = ":"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pts" type="Label" parent="PlayerArea"]
+margin_left = 16.0
+margin_top = 20.0
+margin_right = 119.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 1 )
+text = "Pts"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="TextureButton" parent="PlayerArea"]
+margin_left = 482.0
+margin_top = 54.0
+margin_right = 522.0
+margin_bottom = 94.0
+texture_normal = ExtResource( 4 )
+
+[node name="No" type="TextureButton" parent="PlayerArea"]
+margin_left = 748.0
+margin_top = 54.0
+margin_right = 788.0
+margin_bottom = 94.0
+texture_normal = ExtResource( 1 )
+[connection signal="timeout" from="Timer" to="." method="_on_Countdown_timeout"]
