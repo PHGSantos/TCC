@@ -31,7 +31,7 @@ Configuracoes="*res://Configuracoes.gd"
 [display]
 
 window/size/width=1280
-window/size/height=800
+window/size/height=720
 
 [rendering]
 

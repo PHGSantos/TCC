@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://buttons/blue_boxCross.png" type="Texture" id=1]
+[ext_resource path="res://buttons/blue_button06.png" type="Texture" id=1]
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Conners_pt2.gd" type="Script" id=3]
-[ext_resource path="res://buttons/blue_boxCheckmark.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 59
@@ -16,7 +15,7 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1280.0
-margin_bottom = 800.0
+margin_bottom = 720.0
 color = Color( 0.240463, 0.597656, 0.388363, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -36,9 +35,9 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 
 [node name="PlayerArea" type="ColorRect" parent="."]
-margin_top = 650.0
+margin_top = 570.0
 margin_right = 1280.0
-margin_bottom = 800.0
+margin_bottom = 720.0
 color = Color( 0.0784314, 0.494118, 0.894118, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -93,7 +92,10 @@ margin_left = 482.0
 margin_top = 54.0
 margin_right = 522.0
 margin_bottom = 94.0
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="No" type="TextureButton" parent="PlayerArea"]
 margin_left = 748.0
@@ -101,4 +103,16 @@ margin_top = 54.0
 margin_right = 788.0
 margin_bottom = 94.0
 texture_normal = ExtResource( 1 )
-[connection signal="timeout" from="Timer" to="." method="_on_Countdown_timeout"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changeImage" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="mouse_entered" from="PlayerArea/Yes" to="." method="_on_Yes_mouse_entered"]
+[connection signal="mouse_exited" from="PlayerArea/Yes" to="." method="_on_Yes_mouse_exited"]
+[connection signal="pressed" from="PlayerArea/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="mouse_entered" from="PlayerArea/No" to="." method="_on_No_mouse_entered"]
+[connection signal="mouse_exited" from="PlayerArea/No" to="." method="_on_No_mouse_exited"]
+[connection signal="pressed" from="PlayerArea/No" to="." method="_on_No_pressed"]
+[connection signal="timeout" from="changeImage" to="." method="_on_changeImage_timeout"]

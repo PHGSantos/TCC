@@ -5,8 +5,6 @@ class_name Letra
 var color
 var value
 var face
-var height
-var width
 
 func _ready():
 	pass
@@ -18,16 +16,15 @@ func get_resized_texture(t: Texture, width: int = 0, height: int = 0):
 	var itex = ImageTexture.new()
 	itex.create_from_image(image)
 	return itex	
-	
+
+func modulate_texture(it:ImageTexture, var r, var g, var b):
+	it.modulate(r,g,b)
+
 func _init(var c, var v, var width, var height):
 	color = c
 	value = v
-	#face = load('res://letter_tiles/PNG/'+color+'/'+value+'.png')
 	face = load('res://letter_tiles/PNG/Box/'+value+'.png')
-	#back = MemoriaController.cardBack
-	#set_size(Vector2(20,20))
 	face = get_resized_texture(face,width,height)
 	self.texture = face
-	#set_normal_texture(face)
 	
 	
