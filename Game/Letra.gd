@@ -8,7 +8,7 @@ var face
 
 func _ready():
 	pass
-	
+
 func get_resized_texture(t: Texture, width: int = 0, height: int = 0):
 	var image = t.get_data()
 	if width > 0 && height > 0:
@@ -23,8 +23,6 @@ func modulate_texture(it:ImageTexture, var r, var g, var b):
 func _init(var c, var v, var width, var height):
 	color = c
 	value = v
-	face = load('res://letter_tiles/PNG/Box/'+value+'.png')
+	face = load('res://letter_tiles/PNG/'+c+'/'+value+'.png')
 	face = get_resized_texture(face,width,height)
 	self.texture = face
-	
-	

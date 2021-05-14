@@ -1,9 +1,9 @@
 extends Node
 
 #configurações J1
-var j1_qtd_baterias:int = 8
+var j1_qtd_baterias:int = 1
 var j1_qtd_letras_bateria:int = 10
-var j1_tempo_exibicao:int = 12 
+var j1_tempo_exibicao:int = 4 
 
 #configurações J2
 var j2_qtd_palavras:int = 3

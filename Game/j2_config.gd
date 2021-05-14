@@ -4,6 +4,7 @@ onready var sprite1 = get_node("Comecar/Sprite")
 onready var sprite2 = get_node("Voltar/Sprite")
 
 func _ready():
+	teste()
 	get_node("VBoxContainer/HBoxContainer/n_pal").value = Configuracoes.j2_qtd_palavras
 	get_node("VBoxContainer/HBoxContainer2/n_cor").value = Configuracoes.j2_qtd_cores
 	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j2_tempo_exibicao
@@ -41,3 +42,9 @@ func _on_Voltar_mouse_entered():
 
 func _on_Voltar_mouse_exited():
 	sprite2.modulate = Color(1,1,1)
+
+func teste():
+	var i = 0
+	while i < 10:
+		print(Helper.get_random_number(1,25))
+		i+=1

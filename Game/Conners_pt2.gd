@@ -6,21 +6,29 @@ onready var sec = get_node("PlayerArea/seg")
 onready var minute = get_node("PlayerArea/min")
 var displayValueSec = 0
 var displayValueMin  = 0
-
-var changer = 0
-var tempo_exibicao = 4
+var changer
+var letra
+onready var qtd_bateria = Configuracoes.j1_qtd_baterias
+onready var qtd_letras = Configuracoes.j1_qtd_letras_bateria
+onready var tempo_exibicao = Configuracoes.j1_tempo_exibicao
+var points = 0
+onready var letter_queue = Helper.fillLetterDeck(qtd_letras*qtd_bateria)
 
 func _ready():
-	display_letra('A')
+	updateImageQueue()
 	timer.set_wait_time(1)
 	timer.start()
 	changeImage.set_wait_time(1)
 	changeImage.start()
 
+func updateImageQueue():
+	display_letra(letter_queue.pop_front())
+	changer = 0
+
 func display_letra(var l):
-	var letra = Letra.new('Blue','letter_'+l,92,130)
+	letra = Letra.new('Blue','letter_'+l,300,300)
 	letra.set_name('Letra')
-	letra.set_position(Vector2(300,300),false)
+	letra.set_position(Vector2(500,150),false)
 	add_child(letra)
 
 func imageTrigger(var curr_Value, var ref_value, var interval):
@@ -30,45 +38,40 @@ func imageTrigger(var curr_Value, var ref_value, var interval):
 		return false;
 
 func _on_Yes_pressed():
-	pass # Replace with function body.
-
-
-func _on_Yes_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_Yes_mouse_exited():
-	pass # Replace with function body.
-
+	if(letra.value == 'X'):
+		points+=1
+		get_node("PlayerArea/qtd_pts").set_text(str(points))
+	updateImageQueue()
 
 func _on_No_pressed():
-	pass # Replace with function body.
-
-
-func _on_No_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_No_mouse_exited():
-	pass # Replace with function body.
-
+	if(letra.value != 'X'):
+		points+=1
+		get_node("PlayerArea/qtd_pts").set_text(str(points))
+	updateImageQueue()
 
 func _on_Timer_timeout():
 	displayValueSec+=1
 	if(displayValueSec < 10):
 		sec.set_text('0'+str(displayValueSec))
 	else:
-		sec.set_text(str(displayValueSec))
-		if(displayValueSec == 60):
+		#sec.set_text(str(displayValueSec))
+		if(displayValueSec <= 59):
+			sec.set_text(str(displayValueSec))
+			#displayValueMin+=1
+			if(displayValueMin < 10):
+				minute.set_text('0'+str(displayValueMin))
+			else:
+				minute.set_text(str(displayValueMin))
+		else:
 			displayValueMin+=1
+			displayValueSec = 0
+			sec.set_text(str(displayValueSec))
 			if(displayValueMin < 10):
 				minute.set_text('0'+str(displayValueMin))
 			else:
 				minute.set_text(str(displayValueMin))
 
-
 func _on_changeImage_timeout():
 	changer+=1
 	if(changer==tempo_exibicao):
-		display_letra('B')
-		changer = 0
+		updateImageQueue()

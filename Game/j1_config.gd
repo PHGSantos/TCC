@@ -12,7 +12,6 @@ func _ready():
 func _on_Comecar_pressed():
 	sprite1.modulate = Color(0.5,0.5,0.5)
 	
-	var configuracoes = get_node("/root/Configuracoes")
 	var n = get_node("VBoxContainer/HBoxContainer/n_bat").value
 	var l = get_node("VBoxContainer/HBoxContainer2/n_let").value
 	var t = get_node("VBoxContainer/HBoxContainer3/tempo").value
