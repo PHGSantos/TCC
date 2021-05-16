@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Letra",
 "language": "GDScript",
 "path": "res://Letra.gd"
+}, {
+"base": "TextureRect",
+"class": "MemoImg",
+"language": "GDScript",
+"path": "res://MemoImg.gd"
 } ]
 _global_script_class_icons={
-"Letra": ""
+"Letra": "",
+"MemoImg": ""
 }
 
 [application]
