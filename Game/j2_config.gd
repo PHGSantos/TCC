@@ -22,7 +22,7 @@ func _on_Comecar_pressed():
 	Configuracoes.set_j2_qtd_cores(c)
 	Configuracoes.set_j2_tempo_exibicao(t)
 	
-	get_tree().change_scene("res://Scoop.tscn")
+	get_tree().change_scene("res://Stroop.tscn")
 	
 func _on_Comecar_mouse_entered():
 	sprite1.modulate = Color(0.7,0.7,0.7)
