@@ -21,7 +21,8 @@ func _ready():
 #voilet = Color(0.93, 0.51, 0.93)
 #white = Color(1, 1, 1)
 #yellow = Color( 1, 1, 0) 
-
+#brown = Color( 0.65, 0.16, 0.16)
+#gray = Color( 0.75, 0.75, 0.75) 
 func setColors():
 	#font settings
 	var dynamic_font = DynamicFont.new()
@@ -30,20 +31,20 @@ func setColors():
 	
 	#label settings
 	var label1 = Label.new()
-	label1.set_text("Preto")
-	label1.set("custom_colors/font_color", Color(0,0,0))
+	label1.set_text("XXXX")
+	label1.set("custom_colors/font_color", Color(0,0,1))
 	
 	var label2 = Label.new()
-	label2.set_text("Azul")
-	label2.set("custom_colors/font_color", Color(0,0,1))
+	label2.set_text("XXXX")
+	label2.set("custom_colors/font_color", Color(0,1,0))
 	
 	var label3 = Label.new()
-	label3.set_text("Verde")
-	label3.set("custom_colors/font_color", Color(0,1,0))
+	label3.set_text("XXXX")
+	label3.set("custom_colors/font_color", Color(1,0.75,0.8))
 	
 	var label4 = Label.new()
-	label4.set_text("Rosa")
-	label4.set("custom_colors/font_color", Color(1,0.75,0.8))
+	label4.set_text("XXXX")
+	label4.set("custom_colors/font_color", Color(0,0,0))
 	
 	label1.set("custom_fonts/font", dynamic_font)
 	label2.set("custom_fonts/font", dynamic_font)
@@ -56,7 +57,7 @@ func setColors():
 
 func checkAnswer():
 	if (answer.size() == 4):
-		if (answer[0] == "PRETO") and (answer[0] == "AZUL") and (answer[0] == "VERDE") and (answer[0] == "ROSA"):
+		if (answer[0] == "VERDE") and (answer[0] == "AZUL") and (answer[0] == "CINZA") and (answer[0] == "ROSA"):
 			return true
 		else:
 			return false

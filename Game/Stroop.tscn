@@ -28,12 +28,12 @@ __meta__ = {
 }
 
 [node name="texto" type="Label" parent="."]
-margin_left = 318.0
+margin_left = 261.0
 margin_top = 18.0
-margin_right = 1015.0
+margin_right = 1029.0
 margin_bottom = 122.0
 custom_fonts/font = SubResource( 1 )
-text = "Descreva as palavras:"
+text = "Reconhecimento de Cor:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
