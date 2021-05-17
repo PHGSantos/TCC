@@ -5,21 +5,17 @@ onready var sprite2 = get_node("Voltar/Sprite")
 
 func _ready():
 	get_node("VBoxContainer/HBoxContainer/n_img").value = Configuracoes.j3_qtd_imagens
-	get_node("VBoxContainer/HBoxContainer2/categoria").value = Configuracoes.j3_categoria
-	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j3_tempo_exibicao
+	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j3_tempo_limite
 
 
 func _on_Comecar_pressed():
 	sprite1.modulate = Color(0.5,0.5,0.5)
 	
-	var configuracoes = get_node("/root/Configuracoes")
-	var i = get_node("VBoxContainer/HBoxContainer/n_img").value
-	var c = get_node("VBoxContainer/HBoxContainer2/categoria").value
+	var n = get_node("VBoxContainer/HBoxContainer/n_img").value
 	var t = get_node("VBoxContainer/HBoxContainer3/tempo").value
 		
-	Configuracoes.set_j2_qtd_palavras(i)
-	Configuracoes.set_j2_qtd_cores(c)
-	Configuracoes.set_j2_tempo_exibicao(t)
+	Configuracoes.set_j3_qtd_imagens(n)
+	Configuracoes.set_j3_tempo_limite(t)
 	
 	get_tree().change_scene("res://TOMM.tscn")
 

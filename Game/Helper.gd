@@ -1,6 +1,8 @@
 extends Node
 
 var deck = Array()
+var study_set = Array()
+var other_set = Array()
 
 func _ready():
 	
@@ -77,4 +79,17 @@ func fillLetterDeck(var size):
 		print(letra)
 	return deck
 
-
+func fillImageDecks(var size):
+	var arr = Array()
+	
+	var i = 1
+	while(i <= size):
+		arr.append(i)
+		i+=1
+	
+	arr.shuffle()
+	var half = size%2
+	var a = arr.slice(0, half-1)
+	var b = arr.slice(half, size-1)
+	print(a)
+	print(b)

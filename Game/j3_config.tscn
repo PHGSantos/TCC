@@ -61,7 +61,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 156.0
 margin_right = 1260.0
 margin_bottom = 230.0
@@ -70,45 +70,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label1" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 507.0
-margin_bottom = 74.0
-custom_fonts/font = SubResource( 1 )
-text = "Categoria das imagens"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="categoria" type="SpinBox" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 509.0
-margin_right = 583.0
-margin_bottom = 74.0
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 234.0
-margin_right = 1260.0
-margin_bottom = 308.0
-custom_constants/separation = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="label1" type="Label" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 701.0
+margin_right = 375.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "Tempo de exibição por imagem"
+text = "Limite de Tempo"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="tempo" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 703.0
-margin_right = 777.0
+margin_left = 377.0
+margin_right = 451.0
 margin_bottom = 74.0
 align = 1
 __meta__ = {

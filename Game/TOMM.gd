@@ -1,48 +1,57 @@
 extends Node2D
 
-var deck = Array()
+var study_set
+var other_set
 var displayValue = 10
 onready var timer = get_node("Countdown")
 onready var display = get_node("PlayerArea/display")
 var increase = false
+var size = Configuracoes.j3_qtd_imagens
 
 func _ready():
-	listImages()
+	createImageSets(size)
 	displayAllImages()
 	timer.set_wait_time(1)
 	timer.start()
 	
 
-func listImages():
+func createImageSets(var size):
+	var arr = Array()
 	var n = 1
-	while (n <= 30):
-		deck.append(MemoImg.new(n,115,130))
+	while (n <= size):
+		arr.append(n)
 		n = n + 1
-	pass
+	randomize()
+	arr.shuffle()
+	
+	var half = size/2
+	study_set = arr.slice(0,half-1)
+	other_set = arr.slice(half, size-1)
+	
+	print(study_set)
+	print(other_set)
+	
+	Configuracoes.set_j3_study_set(study_set)
+	Configuracoes.set_j3_other_set(other_set)
 
 func displayAllImages():
 	var n = 0
-	if deck.empty() == false:
-		while n < deck.size():  
-			get_node("grid").add_child(deck[n])
+	var size = study_set.size()
+	var arr = study_set.duplicate()
+	if study_set.empty() == false:
+		while n < size:  
+			var v = arr.pop_front()
+			var img = MemoImg.new(v, 50, 50)
+			get_node("grid").add_child(img)
 			n = n + 1
 	else:
-		print('ERROR: DECK IS EMPTY (MemoriaController.gd)')		
-
-func resetScene():
-	deleteNode("PlayerArea/texto")
-	deleteNode("grid")
-
-func deleteNode(var tree_path):
-	var node = get_node(tree_path)
-	if(is_instance_valid(node)):
-		node.queue_free()
+		print('ERROR: STUDY SET IS EMPTY')		
 
 
 func _on_Countdown_timeout():
 	if (displayValue == 0):
 		increase = true
-		get_tree().change_scene("res://Conners_pt2.tscn")
+		get_tree().change_scene("res://TOMM_pt2.tscn")
 		#resetScene()
 		
 	if(increase == false):

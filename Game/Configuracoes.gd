@@ -11,9 +11,10 @@ var j2_qtd_cores:int = 6
 var j2_tempo_exibicao:int = 2
 
 #configurações J3
-var j3_qtd_imagens:int = 10
-var j3_categoria:int = 1
-var j3_tempo_exibicao:int = 4
+var j3_qtd_imagens:int = 30
+var j3_tempo_limite:int = 5
+var j3_study_set
+var j3_other_set
 
 func _ready():
 	pass # Replace with function body.
@@ -42,5 +43,11 @@ func set_j3_qtd_imagens(var i):
 func set_j3_categoria(var c):
 	self.j3_categoria = c
 	
-func set_j3_tempo_exibicao(var t):
-	self.j3_tempo_exibicao = t
+func set_j3_tempo_limite(var t):
+	self.j3_tempo_limite = t
+
+func set_j3_study_set(var ss):
+	self.j3_study_set = ss
+	
+func set_j3_other_set(var os):
+	self.j3_other_set = os
