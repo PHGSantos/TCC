@@ -71,6 +71,29 @@ func translateNumberToLetter(v):
 	else:
 		return '$'	
 
+func translateColor(v):
+	match v:
+		"PRETO":
+			return Color(0,0,0)
+		"AZUL":
+			return Color(0,0,1)
+		"VERDE":
+			return Color(0,1,0)
+		"ROSA":
+			return Color(1,0.75,0.8)
+		"VERMELHO":
+			return Color(1,0,0)
+		"VIOLETA":
+			return Color(0.93,0.51,0.93)
+		"BRANCO":
+			return Color(1,1,1)
+		"AMARELO":
+			return Color(1,1,0)
+		"MARROM":
+			return Color(0.65,0.16,0.16)
+		"CINZA":
+			return Color(0.75,0.75,0.75)
+
 func fillLetterDeck(var size):
 	while deck.size() < size:
 		var n = get_random_number(1,25)

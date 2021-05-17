@@ -1,59 +1,77 @@
 extends Node2D
 
-var back
-var word
 var grid
 var answer
 var etapa
+var possible_colors = ["CINZA", "AZUL", "VERDE", "ROSA"]
+var words
+var colors
+var tipo_teste
 
+#TIPOS DE TESTE
+#0 - teste inicial
+#1 - com 4 cores apenas
+#2 - com 112 cores
 func _ready():
+	tipo_teste = 0
 	etapa = 1
 	answer = Array()
+	words = Array()
+	colors = Array()
 	grid = get_node("grid")
 	grid.rect_position = Vector2(300,300)
-	setColors()
+	setSceneColors()
+	setSceneLabels()
 
-#black = (0,0,0)
-#blue = (0,0,1)
-#green = (0,1,0)
-#pink = (1, 0.75, 0.8)
-#red = (1,0,0)
-#voilet = Color(0.93, 0.51, 0.93)
-#white = Color(1, 1, 1)
-#yellow = Color( 1, 1, 0) 
-#brown = Color( 0.65, 0.16, 0.16)
-#gray = Color( 0.75, 0.75, 0.75) 
-func setColors():
+func setSceneColors():
+	if(tipo_teste == 0):
+		testeTipo0()
+	elif(tipo_teste == 1):
+		testeTipo1()
+	else:
+		testeTipo2()
+
+func testeTipo0():
+	var i = 0
+	while i < 4:
+		words.append("XXXX")
+		i+=1
+	colors = possible_colors.duplicate()
+
+func testeTipo1():
+	for i in range(0,3,1):
+		words[i] = possible_colors[i]
+		if (i == 0):
+			colors[i] = possible_colors[1]
+		elif(i == 1):
+			colors[i] = possible_colors[2]
+		elif(i == 2):
+			colors[i] = possible_colors[3]
+		else:
+			colors[i] = possible_colors[0]
+	pass
+
+func testeTipo2():
+	pass
+
+func setSceneLabels():
 	#font settings
 	var dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")
 	dynamic_font.size = 64
 	
 	#label settings
-	var label1 = Label.new()
-	label1.set_text("XXXX")
-	label1.set("custom_colors/font_color", Color(0,0,1))
+	print('words ='+str(words.size()))
+	print('colors ='+str(colors.size()))
 	
-	var label2 = Label.new()
-	label2.set_text("XXXX")
-	label2.set("custom_colors/font_color", Color(0,1,0))
-	
-	var label3 = Label.new()
-	label3.set_text("XXXX")
-	label3.set("custom_colors/font_color", Color(1,0.75,0.8))
-	
-	var label4 = Label.new()
-	label4.set_text("XXXX")
-	label4.set("custom_colors/font_color", Color(0,0,0))
-	
-	label1.set("custom_fonts/font", dynamic_font)
-	label2.set("custom_fonts/font", dynamic_font)
-	label3.set("custom_fonts/font", dynamic_font)
-	label4.set("custom_fonts/font", dynamic_font)
-	grid.add_child(label1)
-	grid.add_child(label2)
-	grid.add_child(label3)
-	grid.add_child(label4)
+	var i = 0
+	while i < words.size():
+		var label = Label.new()
+		label.set_text(words[i])
+		label.set("custom_colors/font_color", colors[i])
+		label.set("custom_fonts/font", dynamic_font)
+		grid.add_child(label)
+		i+=1
 
 func checkAnswer():
 	if (answer.size() == 4):
@@ -83,3 +101,14 @@ func updateScene(var button):
 		get_node("PlayerArea/lab/etapa").set_text("OK!")
 	else:
 		get_node("PlayerArea/lab/etapa").set_text(str(etapa)+"/4")
+
+#black = (0,0,0)
+#blue = (0,0,1)
+#green = (0,1,0)
+#pink = (1, 0.75, 0.8)
+#red = (1,0,0)
+#voilet = Color(0.93, 0.51, 0.93)
+#white = Color(1, 1, 1)
+#yellow = Color( 1, 1, 0) 
+#brown = Color( 0.65, 0.16, 0.16)
+#gray = Color( 0.75, 0.75, 0.75) 

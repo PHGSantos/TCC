@@ -50,8 +50,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Countdown" type="Timer" parent="."]
-
 [node name="PlayerArea" type="ColorRect" parent="."]
 margin_top = 570.0
 margin_right = 1280.0
@@ -180,7 +178,6 @@ text = "1/4"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="Countdown" to="." method="_on_Countdown_timeout"]
 [connection signal="pressed" from="PlayerArea/B1" to="." method="_on_B1_pressed"]
 [connection signal="pressed" from="PlayerArea/B2" to="." method="_on_B2_pressed"]
 [connection signal="pressed" from="PlayerArea/B3" to="." method="_on_B3_pressed"]
