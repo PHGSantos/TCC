@@ -7,6 +7,8 @@ var possible_colors = ["CINZA", "AZUL", "VERDE", "ROSA"]
 var words
 var colors
 var tipo_teste
+var current = 0
+var maximum = 112
 
 #TIPOS DE TESTE
 #0 - teste inicial
@@ -52,7 +54,49 @@ func testeTipo1():
 	pass
 
 func testeTipo2():
-	pass
+	var rng
+	var arr
+	var w
+	var c
+	var i = 0
+	while i < 112:
+		arr = possible_colors.duplicate()
+		
+		rng = Helper.get_random_number(0,3)
+		w = arr[rng]
+		arr.remove(rng)
+		words.append(w)
+
+		rng = Helper.get_random_number(0,2)
+		c = arr[rng]
+		arr.remove(rng)
+		colors.append(c)
+		
+		print('words['+str(i)+'] = '+words[i])
+		print('colors['+str(i)+'] = '+colors[i])
+		i+=1
+
+func testeTipo20():
+	var rng
+	var arr
+	var w
+	var c
+	
+	arr = possible_colors.duplicate()
+	
+	rng = Helper.get_random_number(0,3)
+	w = arr[rng]
+	arr.remove(rng)
+	words.append(w)
+
+	rng = Helper.get_random_number(0,2)
+	c = arr[rng]
+	arr.remove(rng)
+	colors.append(c)
+	
+	print('words['+str(current)+'] = '+words[current])
+	print('colors['+str(current)+'] = '+colors[current])
+	current+=1
 
 func setSceneLabels():
 	#font settings
@@ -61,11 +105,17 @@ func setSceneLabels():
 	dynamic_font.size = 64
 	
 	#label settings
-	print('words ='+str(words.size()))
-	print('colors ='+str(colors.size()))
+	#print('words ='+str(words.size()))
+	#print('colors ='+str(colors.size()))
 	
+	var qtd
+	if ((tipo_teste == 0) or (tipo_teste == 1)):
+		qtd = words.size()#4
+	else:
+		qtd = 1
+		
 	var i = 0
-	while i < words.size():
+	while i < qtd:
 		var label = Label.new()
 		label.set_text(words[i])
 		label.set("custom_colors/font_color", colors[i])
