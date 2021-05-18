@@ -6,9 +6,9 @@ var j1_qtd_letras_bateria:int = 10
 var j1_tempo_exibicao:int = 4 
 
 #configurações J2
-var j2_qtd_palavras:int = 3
-var j2_qtd_cores:int = 6
-var j2_tempo_exibicao:int = 2
+var j2_cores_possiveis = Array()
+var j2_tipo_teste
+var j2_nome_teste
 
 #configurações J3
 var j3_qtd_imagens:int = 30
@@ -28,14 +28,14 @@ func set_j1_qtd_letras_bateria(var l):
 func set_j1_tempo_exibicao(var t):
 	self.j1_tempo_exibicao = t
 
-func set_j2_qtd_palavras(var p):
-	self.j2_qtd_palavras = p
+func set_j2_cores_possiveis(var cores):
+	self.j2_cores_possiveis = cores
 
-func set_j2_qtd_cores(var c):
-	self.j2_qtd_cores = c
+func set_j2_tipo_tiste(var t):
+	self.j2_tipo_teste = t
 	
-func set_j2_tempo_exibicao(var t):
-	self.j2_tempo_exibicao = t
+func set_j2_nome_teste(var n):
+	self.j2_nome_teste = n
 
 func set_j3_qtd_imagens(var i):
 	self.j3_qtd_imagens = i

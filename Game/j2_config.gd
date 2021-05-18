@@ -4,47 +4,39 @@ onready var sprite1 = get_node("Comecar/Sprite")
 onready var sprite2 = get_node("Voltar/Sprite")
 
 func _ready():
-	teste()
-	get_node("VBoxContainer/HBoxContainer/n_pal").value = Configuracoes.j2_qtd_palavras
-	get_node("VBoxContainer/HBoxContainer2/n_cor").value = Configuracoes.j2_qtd_cores
-	get_node("VBoxContainer/HBoxContainer3/tempo").value = Configuracoes.j2_tempo_exibicao
-	
-	
-func _on_Comecar_pressed():
-	sprite1.modulate = Color(0.5,0.5,0.5)
-	
-	var configuracoes = get_node("/root/Configuracoes")
-	var p = get_node("VBoxContainer/HBoxContainer/n_pal").value
-	var c = get_node("VBoxContainer/HBoxContainer2/n_cor").value
-	var t = get_node("VBoxContainer/HBoxContainer3/tempo").value
-		
-	Configuracoes.set_j2_qtd_palavras(p)
-	Configuracoes.set_j2_qtd_cores(c)
-	Configuracoes.set_j2_tempo_exibicao(t)
-	
-	get_tree().change_scene("res://Stroop.tscn")
-	
-func _on_Comecar_mouse_entered():
-	sprite1.modulate = Color(0.7,0.7,0.7)
-
-
-func _on_Comecar_mouse_exited():
-	sprite1.modulate = Color(1,1,1)
+	pass
 
 
 func _on_Voltar_pressed():
-	sprite2.modulate = Color(0.5,0.5,0.5)
 	get_tree().change_scene("res://MenuPrincipal.tscn")
 
-func _on_Voltar_mouse_entered():
-	sprite2.modulate = Color(0.7,0.7,0.7)
+func _on_B0_pressed():
+	Configuracoes.set_j2_cores_possiveis([])
+	Configuracoes.set_j2_tipo_tiste(0)
+	Configuracoes.set_j2_nome_teste("Reconhecimento de Cor")
+	get_tree().change_scene("res://Stroop.tscn")
+
+func _on_B1_pressed():
+	Configuracoes.set_j2_cores_possiveis([])
+	Configuracoes.set_j2_tipo_tiste(1)
+	Configuracoes.set_j2_nome_teste("Tutorial (Leitura de Cores)")
+	get_tree().change_scene("res://Stroop.tscn")
+
+func _on_B2_pressed():
+	Configuracoes.set_j2_cores_possiveis([])
+	Configuracoes.set_j2_tipo_tiste(1)
+	Configuracoes.set_j2_nome_teste("Tutorial (Nomeação de Cores)")
+	get_tree().change_scene("res://Stroop.tscn")
+
+func _on_B3_pressed():
+	Configuracoes.set_j2_cores_possiveis([])
+	Configuracoes.set_j2_tipo_tiste(2)
+	Configuracoes.set_j2_nome_teste("Leitura de Cores")
+	get_tree().change_scene("res://Stroop.tscn")
 
 
-func _on_Voltar_mouse_exited():
-	sprite2.modulate = Color(1,1,1)
-
-func teste():
-	var i = 0
-	while i < 10:
-		print(Helper.get_random_number(1,25))
-		i+=1
+func _on_B4_pressed():
+	Configuracoes.set_j2_cores_possiveis([])
+	Configuracoes.set_j2_tipo_tiste(2)
+	Configuracoes.set_j2_nome_teste("Nomeação de Cores")
+	get_tree().change_scene("res://Stroop.tscn")

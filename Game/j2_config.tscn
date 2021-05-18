@@ -84,7 +84,7 @@ __meta__ = {
 [node name="B0" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 557.0
 margin_right = 747.0
-margin_bottom = 74.0
+margin_bottom = 49.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
@@ -124,7 +124,7 @@ __meta__ = {
 [node name="B1" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 374.0
 margin_right = 564.0
-margin_bottom = 74.0
+margin_bottom = 49.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
@@ -146,7 +146,7 @@ __meta__ = {
 [node name="B2" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 566.0
 margin_right = 756.0
-margin_bottom = 74.0
+margin_bottom = 49.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
@@ -183,12 +183,16 @@ __meta__ = {
 [node name="B3" type="TextureButton" parent="VBoxContainer/HBoxContainer4"]
 margin_left = 445.0
 margin_right = 635.0
-margin_bottom = 74.0
+margin_bottom = 49.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/B3"]
+anchor_left = -0.0105263
+anchor_top = -0.027027
+anchor_right = -0.0105263
+anchor_bottom = -0.027027
 margin_left = 28.0
 margin_top = -6.0
 margin_right = 154.0
@@ -202,7 +206,7 @@ __meta__ = {
 [node name="B4" type="TextureButton" parent="VBoxContainer/HBoxContainer4"]
 margin_left = 637.0
 margin_right = 827.0
-margin_bottom = 74.0
+margin_bottom = 49.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
@@ -218,58 +222,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Voltar" type="Button" parent="."]
-margin_left = 234.0
-margin_top = 432.0
-margin_right = 534.0
-margin_bottom = 512.0
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+margin_top = 395.0
+margin_right = 300.0
+margin_bottom = 495.0
+items = [ "Cinza", null, false, "Azul", null, false, "Verde", null, false, "Rosa", null, false ]
+select_mode = 1
+
+[node name="Voltar" type="TextureButton" parent="."]
+margin_left = 528.0
+margin_top = 540.0
+margin_right = 718.0
+margin_bottom = 589.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sprite" type="Sprite" parent="Voltar"]
-position = Vector2( 148, 40 )
-scale = Vector2( 1.60897, 1.6613 )
-texture = ExtResource( 2 )
-
-[node name="lab_voltar" type="Label" parent="Voltar"]
-margin_left = 65.0
-margin_top = -2.0
-margin_right = 285.0
-margin_bottom = 72.0
-custom_fonts/font = SubResource( 1 )
-text = "Voltar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Comecar" type="Button" parent="."]
-margin_left = 744.0
-margin_top = 434.0
-margin_right = 1044.0
-margin_bottom = 514.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="Comecar"]
-position = Vector2( 148, 40 )
-scale = Vector2( 1.60897, 1.6613 )
-texture = ExtResource( 2 )
-
-[node name="lab_começar" type="Label" parent="Comecar"]
-margin_left = 45.0
-margin_top = -2.0
-margin_right = 265.0
-margin_bottom = 72.0
-custom_fonts/font = SubResource( 1 )
-text = "Começar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/B0" to="." method="_on_B0_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/B1" to="." method="_on_B1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/B2" to="." method="_on_B2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer4/B3" to="." method="_on_B3_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer4/B4" to="." method="_on_B4_pressed"]
 [connection signal="mouse_entered" from="Voltar" to="." method="_on_Voltar_mouse_entered"]
 [connection signal="mouse_exited" from="Voltar" to="." method="_on_Voltar_mouse_exited"]
 [connection signal="pressed" from="Voltar" to="." method="_on_Voltar_pressed"]
-[connection signal="mouse_entered" from="Comecar" to="." method="_on_Comecar_mouse_entered"]
-[connection signal="mouse_exited" from="Comecar" to="." method="_on_Comecar_mouse_exited"]
-[connection signal="pressed" from="Comecar" to="." method="_on_Comecar_pressed"]
