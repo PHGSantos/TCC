@@ -3,10 +3,11 @@ extends Node2D
 var grid
 var answer
 var etapa
-var possible_colors = ["CINZA", "AZUL", "VERDE", "ROSA"]
+var possible_colors
 var words
 var colors
 var tipo_teste
+var nome_teste
 var current = 0
 var maximum = 112
 
@@ -15,7 +16,12 @@ var maximum = 112
 #1 - com 4 cores apenas
 #2 - com 112 cores
 func _ready():
-	tipo_teste = 0
+	possible_colors = Configuracoes.j2_cores_possiveis
+	tipo_teste = Configuracoes.j2_tipo_teste
+	nome_teste = Configuracoes.j2_nome_teste
+	print(possible_colors)
+	print(tipo_teste)
+	print(nome_teste)
 	etapa = 1
 	answer = Array()
 	words = Array()
@@ -34,10 +40,8 @@ func setSceneColors():
 		testeTipo2()
 
 func testeTipo0():
-	var i = 0
-	while i < 4:
+	for i in range(0,4,1):
 		words.append("XXXX")
-		i+=1
 	colors = possible_colors.duplicate()
 
 func testeTipo1():
@@ -99,6 +103,15 @@ func testeTipo20():
 	current+=1
 
 func setSceneLabels():
+	#test name
+	get_node("texto").set_text(nome_teste)
+	
+	#button text
+	get_node("PlayerArea/B1/Label").set_text(possible_colors[0])
+	get_node("PlayerArea/B2/Label").set_text(possible_colors[1])
+	get_node("PlayerArea/B3/Label").set_text(possible_colors[2])
+	get_node("PlayerArea/B4/Label").set_text(possible_colors[3])
+	
 	#font settings
 	var dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")

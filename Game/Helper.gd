@@ -116,3 +116,11 @@ func fillImageDecks(var size):
 	var b = arr.slice(half, size-1)
 	print(a)
 	print(b)
+
+func checkIfArrayIsUnique(myArray) :
+	for i in range(0, myArray.size(),1): 
+		for j in range(0, myArray.size(), 1): 
+			if (i != j): 
+				if (myArray[i] == myArray[j]): 
+					return false; # means there are duplicate values
+	return true; # means there are no duplicate values

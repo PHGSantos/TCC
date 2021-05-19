@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://buttons/blue_button00.png" type="Texture" id=2]
 [ext_resource path="res://buttons/blue_button02.png" type="Texture" id=3]
 [ext_resource path="res://buttons/blue_button05.png" type="Texture" id=4]
 [ext_resource path="res://j2_config.gd" type="Script" id=5]
-[ext_resource path="res://Icons/down.png" type="Texture" id=6]
-[ext_resource path="res://MenuButton.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 42
@@ -16,8 +14,16 @@ font_data = ExtResource( 1 )
 size = 30
 font_data = ExtResource( 1 )
 
-[node name="j2_config" type="Node2D"]
+[node name="main" type="Control"]
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dropdown_path = NodePath("VBoxContainer/HBoxContainer/dropdown")
+dropdown_c1_path = NodePath("VBoxContainer/HBoxContainer2/dropdown_c1")
+dropdown_c2_path = NodePath("VBoxContainer/HBoxContainer3/dropdown_c2")
+dropdown_c3_path = NodePath("VBoxContainer/HBoxContainer4/dropdown_c3")
+dropdown_c4_path = NodePath("VBoxContainer/HBoxContainer5/dropdown_c4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 20.0
@@ -48,19 +54,18 @@ __meta__ = {
 }
 
 [node name="label1" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_right = 692.0
+margin_right = 591.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "Selecione o conjunto de cores:"
+text = "Selecione o modo de jogo:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="n_pal" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
-margin_left = 694.0
-margin_right = 768.0
+[node name="dropdown" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 593.0
+margin_right = 622.0
 margin_bottom = 74.0
-align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,40 +74,26 @@ __meta__ = {
 margin_top = 158.0
 margin_right = 1240.0
 margin_bottom = 232.0
-custom_constants/separation = 25
+custom_constants/separation = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="label1" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 532.0
+margin_right = 132.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "Reconhecimento de Cor"
+text = "Cor 1:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="B0" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 557.0
-margin_right = 747.0
+[node name="dropdown_c1" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 134.0
+margin_right = 163.0
 margin_bottom = 74.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/B0"]
-margin_left = 28.0
-margin_top = -6.0
-margin_right = 154.0
-margin_bottom = 47.0
-custom_fonts/font = SubResource( 2 )
-text = "Testar"
-__meta__ = {
-"_edit_use_anchors_": true
 }
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
@@ -115,51 +106,18 @@ __meta__ = {
 }
 
 [node name="label1" type="Label" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 372.0
+margin_right = 133.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "Leitura de Cores"
+text = "Cor 2:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="B1" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 374.0
-margin_right = 564.0
+[node name="dropdown_c2" type="OptionButton" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 135.0
+margin_right = 164.0
 margin_bottom = 74.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/B1"]
-margin_left = 28.0
-margin_top = -6.0
-margin_right = 154.0
-margin_bottom = 47.0
-custom_fonts/font = SubResource( 2 )
-text = "Tutorial"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="B2" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 566.0
-margin_right = 756.0
-margin_bottom = 74.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/B2"]
-margin_left = 28.0
-margin_top = -6.0
-margin_right = 154.0
-margin_bottom = 47.0
-custom_fonts/font = SubResource( 2 )
-text = "Jogar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -174,55 +132,62 @@ __meta__ = {
 }
 
 [node name="label1" type="Label" parent="VBoxContainer/HBoxContainer4"]
-margin_right = 443.0
+margin_right = 134.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "Nomeação de Cores"
+text = "Cor 3:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="B3" type="TextureButton" parent="VBoxContainer/HBoxContainer4"]
-margin_left = 445.0
-margin_right = 635.0
+[node name="dropdown_c3" type="OptionButton" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 136.0
+margin_right = 165.0
 margin_bottom = 74.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/B3"]
-anchor_left = -0.0105263
-anchor_top = -0.027027
-anchor_right = -0.0105263
-anchor_bottom = -0.027027
-margin_left = 28.0
-margin_top = -6.0
-margin_right = 154.0
-margin_bottom = 47.0
-custom_fonts/font = SubResource( 2 )
-text = "Tutorial"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="B4" type="TextureButton" parent="VBoxContainer/HBoxContainer4"]
-margin_left = 637.0
-margin_right = 827.0
-margin_bottom = 74.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/B4"]
-margin_left = 28.0
-margin_top = -6.0
-margin_right = 154.0
-margin_bottom = 47.0
-custom_fonts/font = SubResource( 2 )
-text = "Jogar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 395.0
+margin_right = 1240.0
+margin_bottom = 469.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label1" type="Label" parent="VBoxContainer/HBoxContainer5"]
+margin_right = 136.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "Cor 4:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dropdown_c4" type="OptionButton" parent="VBoxContainer/HBoxContainer5"]
+margin_left = 138.0
+margin_right = 167.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="aviso_erro" type="Label" parent="."]
+visible = false
+margin_left = 362.0
+margin_top = 633.0
+margin_right = 1255.0
+margin_bottom = 707.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.913725, 0.298039, 0.298039, 1 )
+text = "Aviso: todas as cores devem ser únicas"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="aviso_erro"]
 
 [node name="Voltar" type="TextureButton" parent="."]
 margin_left = 528.0
@@ -236,31 +201,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="ItemList" parent="."]
-margin_left = 942.0
-margin_top = 113.0
-margin_right = 1242.0
-margin_bottom = 263.0
-items = [ "Cinza", null, false, "Azul", null, false, "Verde", null, false, "Rosa", null, false ]
-select_mode = 1
+[node name="Label" type="Label" parent="Voltar"]
+margin_left = 39.0
+margin_top = -6.0
+margin_right = 165.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 2 )
+text = "Voltar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="MenuButton" parent="."]
-margin_left = 1066.0
-margin_top = 66.0
-margin_right = 1128.0
-margin_bottom = 122.0
-icon = ExtResource( 6 )
-script = ExtResource( 7 )
+[node name="Comecar" type="TextureButton" parent="."]
+margin_left = 772.0
+margin_top = 540.0
+margin_right = 962.0
+margin_bottom = 589.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/B0" to="." method="_on_B0_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer3/B1" to="." method="_on_B1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer3/B2" to="." method="_on_B2_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer4/B3" to="." method="_on_B3_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer4/B4" to="." method="_on_B4_pressed"]
+
+[node name="Label" type="Label" parent="Comecar"]
+margin_left = 26.0
+margin_top = -6.0
+margin_right = 166.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 2 )
+text = "Começar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="aviso_erro/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Voltar" to="." method="_on_Voltar_pressed"]
-[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Comecar" to="." method="_on_Comecar_pressed"]

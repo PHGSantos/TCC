@@ -31,7 +31,7 @@ func set_j1_tempo_exibicao(var t):
 func set_j2_cores_possiveis(var cores):
 	self.j2_cores_possiveis = cores
 
-func set_j2_tipo_tiste(var t):
+func set_j2_tipo_teste(var t):
 	self.j2_tipo_teste = t
 	
 func set_j2_nome_teste(var n):
