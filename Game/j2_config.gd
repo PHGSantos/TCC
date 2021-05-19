@@ -38,7 +38,11 @@ func add_items():
 		for cor in all_colors:
 			element.add_item(cor)
 	
-	#set_default(0)
+	set_default(dropdown, 0)
+	set_default(dropdown_c1, 0)
+	set_default(dropdown_c2, 1)
+	set_default(dropdown_c3, 2)
+	set_default(dropdown_c4, 3)
 
 func remove_item(var id):
 	dropdown.remove_item(id)
@@ -46,8 +50,8 @@ func remove_item(var id):
 func disable_item(id):
 	dropdown.set_item_disabled(id, true)
 
-func set_default(id):
-	dropdown.select(id)
+func set_default(var d, id):
+	d.select(id)
 
 func _on_Voltar_pressed():
 	get_tree().change_scene("res://MenuPrincipal.tscn")

@@ -40,22 +40,23 @@ func setSceneColors():
 		testeTipo2()
 
 func testeTipo0():
-	for i in range(0,4,1):
+	var i = 0
+	while i < 4:
 		words.append("XXXX")
+		i+=1
 	colors = possible_colors.duplicate()
 
 func testeTipo1():
-	for i in range(0,3,1):
-		words[i] = possible_colors[i]
+	for i in range(0,4,1):
+		words.append(possible_colors[i])
 		if (i == 0):
-			colors[i] = possible_colors[1]
+			colors.append(possible_colors[1])
 		elif(i == 1):
-			colors[i] = possible_colors[2]
+			colors.append(possible_colors[2])
 		elif(i == 2):
-			colors[i] = possible_colors[3]
+			colors.append(possible_colors[3])
 		else:
-			colors[i] = possible_colors[0]
-	pass
+			colors.append(possible_colors[0])
 
 func testeTipo2():
 	var rng
@@ -130,19 +131,57 @@ func setSceneLabels():
 	var i = 0
 	while i < qtd:
 		var label = Label.new()
-		label.set_text(words[i])
-		label.set("custom_colors/font_color", colors[i])
+		label.set_text(words[current+i])
+		var cor = Helper.translateColor(colors[current+i])
+		label.set("custom_colors/font_color", cor)
 		label.set("custom_fonts/font", dynamic_font)
 		grid.add_child(label)
 		i+=1
 
-func checkAnswer():
-	if (answer.size() == 4):
-		if (answer[0] == "VERDE") and (answer[0] == "AZUL") and (answer[0] == "CINZA") and (answer[0] == "ROSA"):
-			return true
-		else:
-			return false
 
+func finishTest():
+	var gabarito
+	var qtd
+	if(nome_teste == "Reconhecimento de Cores"):
+		gabarito = possible_colors.duplicate()
+		qtd = 4
+		compareAnswer(qtd, gabarito) 
+	elif(nome_teste == "Tutorial: Leitura de Cores"):
+		gabarito = words.duplicate()
+		qtd = 4
+		compareAnswer(qtd, gabarito)
+	elif(nome_teste == "Tutorial: Nomeação de Cores"):
+		gabarito = colors.duplicate()
+		qtd = 4
+		compareAnswer(qtd, gabarito)
+	elif(nome_teste == "Leitura de Cores"):
+		gabarito = words.duplicate()
+		qtd = answer
+		analizeAnswer(qtd, gabarito)
+	else:
+		gabarito = colors.duplicate()
+		qtd = 112
+		analizeAnswer(qtd, gabarito)
+
+func compareAnswer(var qtd, var gabarito):
+	for i in range (0, qtd, 1):
+		if(answer[i] != gabarito[i]):
+			return false
+	
+	return true
+	
+func analizeAnswer(var qtd, var gabarito):
+	var hits = 0
+	var errors = 0
+	for i in range (0, qtd, 1):
+		if(answer[i] != gabarito[i]):
+			errors+=1
+		else:
+			hits+=1
+	var time = 112
+	var total_answers = answer.size()
+	var results = [time, total_answers, errors, hits]
+	return results
 
 func _on_B1_pressed():
 	updateScene("B1")
@@ -159,9 +198,17 @@ func _on_B4_pressed():
 func updateScene(var button):
 	var s = get_node("PlayerArea/"+button+"/Label").get_text()
 	answer.append(s)
+	
+	var max_etapa
+	if(tipo_teste == 0 or tipo_teste == 1):
+		max_etapa = 5
+	else:
+		max_etapa = 113
+		
 	etapa += 1
-	if (etapa == 5):
+	if (etapa == max_etapa):
 		get_node("PlayerArea/lab/etapa").set_text("OK!")
+		finishTest()
 	else:
 		get_node("PlayerArea/lab/etapa").set_text(str(etapa)+"/4")
 
