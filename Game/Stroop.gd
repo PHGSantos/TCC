@@ -28,8 +28,19 @@ func _ready():
 	colors = Array()
 	grid = get_node("grid")
 	grid.rect_position = Vector2(300,300)
+	setSceneUI()
 	setSceneColors()
 	setSceneLabels()
+
+func setSceneUI():
+	#test name
+	get_node("texto").set_text(nome_teste)
+	
+	#button text
+	get_node("PlayerArea/B1/Label").set_text(possible_colors[0])
+	get_node("PlayerArea/B2/Label").set_text(possible_colors[1])
+	get_node("PlayerArea/B3/Label").set_text(possible_colors[2])
+	get_node("PlayerArea/B4/Label").set_text(possible_colors[3])
 
 func setSceneColors():
 	if(tipo_teste == 0):
@@ -63,29 +74,6 @@ func testeTipo2():
 	var arr
 	var w
 	var c
-	var i = 0
-	while i < 112:
-		arr = possible_colors.duplicate()
-		
-		rng = Helper.get_random_number(0,3)
-		w = arr[rng]
-		arr.remove(rng)
-		words.append(w)
-
-		rng = Helper.get_random_number(0,2)
-		c = arr[rng]
-		arr.remove(rng)
-		colors.append(c)
-		
-		print('words['+str(i)+'] = '+words[i])
-		print('colors['+str(i)+'] = '+colors[i])
-		i+=1
-
-func testeTipo20():
-	var rng
-	var arr
-	var w
-	var c
 	
 	arr = possible_colors.duplicate()
 	
@@ -99,20 +87,13 @@ func testeTipo20():
 	arr.remove(rng)
 	colors.append(c)
 	
-	print('words['+str(current)+'] = '+words[current])
-	print('colors['+str(current)+'] = '+colors[current])
-	current+=1
+	#print('etapa: '+str(etapa))
+	#print('words['+str(current)+'] = '+words[current])
+	#print('colors['+str(current)+'] = '+colors[current])
+	#clear_console()
+	#current+=1
 
 func setSceneLabels():
-	#test name
-	get_node("texto").set_text(nome_teste)
-	
-	#button text
-	get_node("PlayerArea/B1/Label").set_text(possible_colors[0])
-	get_node("PlayerArea/B2/Label").set_text(possible_colors[1])
-	get_node("PlayerArea/B3/Label").set_text(possible_colors[2])
-	get_node("PlayerArea/B4/Label").set_text(possible_colors[3])
-	
 	#font settings
 	var dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")
@@ -125,18 +106,23 @@ func setSceneLabels():
 	var qtd
 	if ((tipo_teste == 0) or (tipo_teste == 1)):
 		qtd = words.size()#4
+		var i = 0
+		while i < qtd:
+			var label = Label.new()
+			label.set_text(words[i])
+			var cor = Helper.translateColor(colors[i])
+			label.set("custom_colors/font_color", cor)
+			label.set("custom_fonts/font", dynamic_font)
+			grid.add_child(label)
+			i+=1
 	else:
-		qtd = 1
-		
-	var i = 0
-	while i < qtd:
 		var label = Label.new()
-		label.set_text(words[current+i])
-		var cor = Helper.translateColor(colors[current+i])
+		label.set_text(words[current])
+		var cor = Helper.translateColor(colors[current])
 		label.set("custom_colors/font_color", cor)
 		label.set("custom_fonts/font", dynamic_font)
 		grid.add_child(label)
-		i+=1
+		current+=1
 
 
 func finishTest():
