@@ -89,6 +89,7 @@ func _on_Comecar_pressed():
 		get_node("aviso_erro/Timer").set_wait_time(5)
 		get_node("aviso_erro/Timer").start()
 	
+	Configuracoes.set_current_game(2)
 
 
 func _on_Timer_timeout():

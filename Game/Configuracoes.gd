@@ -1,5 +1,8 @@
 extends Node
 
+#Globais
+var current_game
+
 #configurações J1
 var j1_qtd_baterias:int = 1
 var j1_qtd_letras_bateria:int = 10
@@ -18,6 +21,9 @@ var j3_other_set
 
 func _ready():
 	pass # Replace with function body.
+
+func set_current_game(var cg):
+	self.current_game = cg
 
 func set_j1_qtd_baterias(var n):
 	self.j1_qtd_baterias = n

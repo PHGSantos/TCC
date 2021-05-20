@@ -154,64 +154,78 @@ func singleLabel(var dynamic_font):
 func finishTest():
 	var gabarito
 	var qtd
-	var result
+	var result = [0,0,0,0]
 	if(nome_teste == "Reconhecimento de Cores"):
 		gabarito = possible_colors.duplicate()
 		qtd = 4
-		result = compareAnswer(qtd, gabarito)
-		print(result)
+		#result = compareAnswer(qtd, gabarito)
+		#print(result)
 		 
 	elif(nome_teste == "Tutorial: Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = 4
-		result = compareAnswer(qtd, gabarito)
-		print(result)
+		#result = compareAnswer(qtd, gabarito)
+		#print(result)
 	
 	elif(nome_teste == "Tutorial: Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = 4
-		result = compareAnswer(qtd, gabarito)
-		print(result)
+		#result = compareAnswer(qtd, gabarito)
+		#print(result)
 	
 	elif(nome_teste == "Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = answer.size()
-		result = analizeAnswer(qtd, gabarito)
-		print("tempo:"+str(result[0]))
-		print("total cores:"+str(result[1]))
-		print("acertos:"+str(result[2]))
-		print("erros:"+str(result[3]))
+		#result = analizeAnswer(qtd, gabarito)
+		#PlayerResults.set_j2_result(result)
+		#get_tree().change_scene("res://Results.tscn")
+		#print("tempo:"+str(result[0]))
+		#print("total cores:"+str(result[1]))
+		#print("acertos:"+str(result[2]))
+		#print("erros:"+str(result[3]))
 	
 	elif(nome_teste == "Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = answer.size()
-		result = analizeAnswer(qtd, gabarito)
-		print("tempo:"+str(result[0]))
-		print("total cores:"+str(result[1]))
-		print("acertos:"+str(result[2]))
-		print("erros:"+str(result[3]))
+		#result = analizeAnswer(qtd, gabarito)
+		#PlayerResults.set_j2_result(result)
+		#get_tree().change_scene("res://Results.tscn")
+		#print("tempo:"+str(result[0]))
+		#print("total cores:"+str(result[1]))
+		#print("acertos:"+str(result[2]))
+		#print("erros:"+str(result[3]))
 	
 	else:
 		print("teste inexistente")
+		
+	result = analizeAnswer(qtd, gabarito)
+	PlayerResults.set_j2_result(result)
+	get_tree().change_scene("res://Results.tscn")
+		
 
 func compareAnswer(var qtd, var gabarito):
 	for i in range (0, qtd, 1):
 		if(answer[i] != gabarito[i]):
-			return false
+			return true
 	
 	return true
 	
 func analizeAnswer(var qtd, var gabarito):
 	var hits = 0
 	var errors = 0
-	print('qtd='+str(qtd))
+	#print('qtd='+str(qtd))
 	for i in range (0, qtd, 1):
 		if(answer[i] != gabarito[i]):
 			errors+=1
 		else:
 			hits+=1
 	
-	var tempo_de_jogo =  max_tempo - tempo 
+	var tempo_de_jogo
+	if(tipo_teste == 0 or tipo_teste == 1):
+		tempo_de_jogo =  "sem limite de tempo"
+	else:
+		tempo_de_jogo =  max_tempo - tempo  
+	
 	var total_answers = answer.size()
 	var results = [tempo_de_jogo, total_answers, hits, errors]
 	return results

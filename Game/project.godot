@@ -34,6 +34,7 @@ config/icon="res://icon.png"
 
 Configuracoes="*res://Configuracoes.gd"
 Helper="*res://Helper.gd"
+PlayerResults="*res://PlayerResults.gd"
 
 [display]
 

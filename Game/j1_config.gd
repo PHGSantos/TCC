@@ -19,6 +19,7 @@ func _on_Comecar_pressed():
 	Configuracoes.set_j1_qtd_baterias(n)
 	Configuracoes.set_j1_qtd_letras_bateria(l)
 	Configuracoes.set_j1_tempo_exibicao(t)
+	Configuracoes.set_current_game(1)
 	
 	get_tree().change_scene("res://Conners.tscn")
 

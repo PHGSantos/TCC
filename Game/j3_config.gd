@@ -16,7 +16,7 @@ func _on_Comecar_pressed():
 		
 	Configuracoes.set_j3_qtd_imagens(n)
 	Configuracoes.set_j3_tempo_limite(t)
-	
+	Configuracoes.set_current_game(3)
 	get_tree().change_scene("res://TOMM.tscn")
 
 
