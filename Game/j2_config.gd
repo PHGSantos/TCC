@@ -19,7 +19,7 @@ var test_names
 var all_colors
 
 func _ready():
-	test_names = ["Reconhecimento de Cor", 
+	test_names = ["Reconhecimento de Cores", 
 	"Tutorial: Leitura de Cores", "Tutorial: Nomeação de Cores",
 	"Leitura de Cores", "Nomeação de Cores"]
 	

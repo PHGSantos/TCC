@@ -12,7 +12,7 @@ func get_random_number(from, to):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randi_range(from,to)
-	print(str(my_random_number))
+	#print(str(my_random_number))
 	return my_random_number
 
 func translateNumberToLetter(v):
@@ -99,7 +99,7 @@ func fillLetterDeck(var size):
 		var n = get_random_number(1,25)
 		var letra = translateNumberToLetter(n)
 		deck.append(letra)
-		print(letra)
+		#print(letra)
 	return deck
 
 func fillImageDecks(var size):
@@ -114,8 +114,8 @@ func fillImageDecks(var size):
 	var half = size%2
 	var a = arr.slice(0, half-1)
 	var b = arr.slice(half, size-1)
-	print(a)
-	print(b)
+	#print(a)
+	#print(b)
 
 func checkIfArrayIsUnique(myArray) :
 	for i in range(0, myArray.size(),1): 
