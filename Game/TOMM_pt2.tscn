@@ -166,10 +166,6 @@ text = "0"
 
 [node name="changeImage" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="mouse_entered" from="PlayerArea/Yes" to="." method="_on_Yes_mouse_entered"]
-[connection signal="mouse_exited" from="PlayerArea/Yes" to="." method="_on_Yes_mouse_exited"]
 [connection signal="pressed" from="PlayerArea/Yes" to="." method="_on_Yes_pressed"]
-[connection signal="mouse_entered" from="PlayerArea/No" to="." method="_on_No_mouse_entered"]
-[connection signal="mouse_exited" from="PlayerArea/No" to="." method="_on_No_mouse_exited"]
 [connection signal="pressed" from="PlayerArea/No" to="." method="_on_No_pressed"]
 [connection signal="timeout" from="changeImage" to="." method="_on_changeImage_timeout"]

@@ -19,11 +19,11 @@ func _ready():
 	elif(Configuracoes.current_game == 2):
 		result = PlayerResults.j2_result
 		print(result)
-		displayResultsJ1()
+		displayResultsJ2()
 	
 	elif(Configuracoes.current_game == 3):
 		result = PlayerResults.j3_result
-		displayResultsJ1()
+		displayResultsJ3()
 	
 	else:
 		print("Que jogo é esse?!")
@@ -58,3 +58,11 @@ func displayResultsJ2():
 
 func displayResultsJ3():
 	pass
+
+
+func _on_Salvar_pressed():
+	pass # Replace with function body.
+
+
+func _on_Inicio_pressed():
+	get_tree().change_scene("res://MenuPrincipal.tscn")
