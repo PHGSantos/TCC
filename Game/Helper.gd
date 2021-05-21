@@ -124,3 +124,11 @@ func checkIfArrayIsUnique(myArray) :
 				if (myArray[i] == myArray[j]): 
 					return false; # means there are duplicate values
 	return true; # means there are no duplicate values
+
+func get_resized_texture(t: Texture, width: int = 0, height: int = 0):
+	var image = t.get_data()
+	if width > 0 && height > 0:
+		image.resize(width, height)
+	var itex = ImageTexture.new()
+	itex.create_from_image(image)
+	return itex	

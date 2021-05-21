@@ -137,11 +137,6 @@ func multiLabel(var dynamic_font):
 		i+=1
 
 func singleLabel(var dynamic_font):
-	#font settings
-	#var dynamic_font = DynamicFont.new()
-	#dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")
-	#dynamic_font.size = 64
-	
 	var label = get_node('LabelCor') 
 	label.set_text(words[current])
 	
@@ -158,42 +153,22 @@ func finishTest():
 	if(nome_teste == "Reconhecimento de Cores"):
 		gabarito = possible_colors.duplicate()
 		qtd = 4
-		#result = compareAnswer(qtd, gabarito)
-		#print(result)
 		 
 	elif(nome_teste == "Tutorial: Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = 4
-		#result = compareAnswer(qtd, gabarito)
-		#print(result)
 	
 	elif(nome_teste == "Tutorial: Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = 4
-		#result = compareAnswer(qtd, gabarito)
-		#print(result)
 	
 	elif(nome_teste == "Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = answer.size()
-		#result = analizeAnswer(qtd, gabarito)
-		#PlayerResults.set_j2_result(result)
-		#get_tree().change_scene("res://Results.tscn")
-		#print("tempo:"+str(result[0]))
-		#print("total cores:"+str(result[1]))
-		#print("acertos:"+str(result[2]))
-		#print("erros:"+str(result[3]))
 	
 	elif(nome_teste == "Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = answer.size()
-		#result = analizeAnswer(qtd, gabarito)
-		#PlayerResults.set_j2_result(result)
-		#get_tree().change_scene("res://Results.tscn")
-		#print("tempo:"+str(result[0]))
-		#print("total cores:"+str(result[1]))
-		#print("acertos:"+str(result[2]))
-		#print("erros:"+str(result[3]))
 	
 	else:
 		print("teste inexistente")
@@ -213,7 +188,6 @@ func compareAnswer(var qtd, var gabarito):
 func analizeAnswer(var qtd, var gabarito):
 	var hits = 0
 	var errors = 0
-	#print('qtd='+str(qtd))
 	for i in range (0, qtd, 1):
 		if(answer[i] != gabarito[i]):
 			errors+=1
@@ -266,24 +240,6 @@ func updateScene(var button):
 				setSceneLabels()
 			else:
 				finishTest()
-	#etapa += 1
-	#if (etapa == max_etapa):
-	#	get_node("PlayerArea/lab/etapa").set_text("OK!")
-	#	finishTest()
-	#else:
-	#	get_node("PlayerArea/lab/etapa").set_text(str(etapa)+"/4")
-
-#black = (0,0,0)
-#blue = (0,0,1)
-#green = (0,1,0)
-#pink = (1, 0.75, 0.8)
-#red = (1,0,0)
-#voilet = Color(0.93, 0.51, 0.93)
-#white = Color(1, 1, 1)
-#yellow = Color( 1, 1, 0) 
-#brown = Color( 0.65, 0.16, 0.16)
-#gray = Color( 0.75, 0.75, 0.75) 
-
 
 func _on_Timer_timeout():
 	tempo -= 1

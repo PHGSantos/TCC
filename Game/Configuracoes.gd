@@ -15,7 +15,7 @@ var j2_nome_teste
 
 #configurações J3
 var j3_qtd_imagens:int = 30
-var j3_tempo_limite:int = 5
+var j3_stage
 var j3_study_set
 var j3_other_set
 
@@ -46,11 +46,8 @@ func set_j2_nome_teste(var n):
 func set_j3_qtd_imagens(var i):
 	self.j3_qtd_imagens = i
 
-func set_j3_categoria(var c):
-	self.j3_categoria = c
-	
-func set_j3_tempo_limite(var t):
-	self.j3_tempo_limite = t
+func set_j3_stage(var s):
+	self.j3_stage = s
 
 func set_j3_study_set(var ss):
 	self.j3_study_set = ss

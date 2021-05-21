@@ -1,62 +1,46 @@
 extends Node2D
 
-var study_set
-var other_set
-var displayValue = 10
-onready var timer = get_node("Countdown")
-onready var display = get_node("PlayerArea/display")
-var increase = false
-var size = Configuracoes.j3_qtd_imagens
+var study_set_copy
+var other_set_copy
+onready var timer = get_node("timer")
+onready var disp1 = get_node("PlayerArea/disp1")
+onready var disp2 = get_node("PlayerArea/disp2")
+var qtd_imagens
+var current = 1
+onready var img = get_node("img")
 
 func _ready():
-	createImageSets(size)
-	displayAllImages()
-	timer.set_wait_time(1)
+	qtd_imagens = Configuracoes.j3_qtd_imagens
+	study_set_copy = Configuracoes.j3_study_set.duplicate()
+	other_set_copy = Configuracoes.j3_other_set.duplicate()
+	img.set_position(Vector2(300,300))
+	timer.set_wait_time(3)
 	timer.start()
-	
 
-func createImageSets(var size):
-	var arr = Array()
-	var n = 1
-	while (n <= size):
-		arr.append(n)
-		n = n + 1
-	randomize()
-	arr.shuffle()
+func displayImage():
+	#update image
+	#print("study["+str(current-1)+"]")
+	if (current-1 < study_set_copy.size()): #por alguma razão ele faz uma iteração a mais
+		var v = study_set_copy[current-1]
+		var face = load('res://Memo/'+str(v)+'.png')
+		face = Helper.get_resized_texture(face,50,50)
+		img.texture = face
 	
-	var half = size/2
-	study_set = arr.slice(0,half-1)
-	other_set = arr.slice(half, size-1)
+	#update counter
+		updateCounter()
 	
-	print(study_set)
-	print(other_set)
-	
-	Configuracoes.set_j3_study_set(study_set)
-	Configuracoes.set_j3_other_set(other_set)
+		current +=1
 
-func displayAllImages():
-	var n = 0
-	var size = study_set.size()
-	var arr = study_set.duplicate()
-	if study_set.empty() == false:
-		while n < size:  
-			var v = arr.pop_front()
-			var img = MemoImg.new(v, 50, 50)
-			get_node("grid").add_child(img)
-			n = n + 1
-	else:
-		print('ERROR: STUDY SET IS EMPTY')		
+func updateCounter():
+	disp1.set_text(str(current))
+	disp2.set_text("/"+str(qtd_imagens/2))
+	disp1.set_visible(true)
+	disp2.set_visible(true)
 
-
-func _on_Countdown_timeout():
-	if (displayValue == 0):
-		increase = true
+func _on_timer_timeout():
+	if (current > qtd_imagens/2):
 		get_tree().change_scene("res://TOMM_pt2.tscn")
-		#resetScene()
+
+	displayImage()
 		
-	if(increase == false):
-		displayValue -= 1
-	else:
-		displayValue += 1
-		
-	display.set_text(str(displayValue))
+	#displayImage()

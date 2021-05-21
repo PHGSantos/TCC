@@ -97,7 +97,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Yes" type="TextureButton" parent="PlayerArea"]
+[node name="Esquerda" type="TextureButton" parent="PlayerArea"]
 margin_left = 482.0
 margin_top = 34.0
 margin_right = 531.0
@@ -121,7 +121,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="No" type="TextureButton" parent="PlayerArea"]
+[node name="Direita" type="TextureButton" parent="PlayerArea"]
 margin_left = 748.0
 margin_top = 34.0
 margin_right = 797.0
@@ -166,6 +166,5 @@ text = "0"
 
 [node name="changeImage" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="PlayerArea/Yes" to="." method="_on_Yes_pressed"]
-[connection signal="pressed" from="PlayerArea/No" to="." method="_on_No_pressed"]
-[connection signal="timeout" from="changeImage" to="." method="_on_changeImage_timeout"]
+[connection signal="pressed" from="PlayerArea/Esquerda" to="." method="_on_Esquerda_pressed"]
+[connection signal="pressed" from="PlayerArea/Direita" to="." method="_on_Direita_pressed"]
