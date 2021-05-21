@@ -1,23 +1,22 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://buttons/blue_button06.png" type="Texture" id=1]
+[ext_resource path="res://buttons/grey_button02.png" type="Texture" id=1]
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Conners_pt2.gd" type="Script" id=3]
-[ext_resource path="res://buttons/green_button06.png" type="Texture" id=4]
-[ext_resource path="res://buttons/yellow_button06.png" type="Texture" id=5]
-[ext_resource path="res://buttons/red_button03.png" type="Texture" id=6]
+[ext_resource path="res://buttons/grey_button00.png" type="Texture" id=4]
+[ext_resource path="res://buttons/grey_button05.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-outline_size = 2
-outline_color = Color( 0.0784314, 0.494118, 0.894118, 1 )
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=3]
 size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
+outline_size = 2
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -59,11 +58,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="tempo" type="Label" parent="PlayerArea"]
+margin_left = 1024.0
+margin_top = -4.0
+margin_right = 1269.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 3 )
+text = "Tempo de jogo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="seg" type="Label" parent="PlayerArea"]
-margin_left = 1196.0
-margin_top = 20.0
-margin_right = 1270.0
-margin_bottom = 124.0
+margin_left = 1160.0
+margin_top = 24.0
+margin_right = 1234.0
+margin_bottom = 128.0
 custom_fonts/font = SubResource( 1 )
 text = "00"
 __meta__ = {
@@ -71,10 +81,10 @@ __meta__ = {
 }
 
 [node name="min" type="Label" parent="PlayerArea"]
-margin_left = 1106.0
-margin_top = 20.0
-margin_right = 1180.0
-margin_bottom = 124.0
+margin_left = 1070.0
+margin_top = 24.0
+margin_right = 1144.0
+margin_bottom = 128.0
 custom_fonts/font = SubResource( 1 )
 text = "00"
 __meta__ = {
@@ -82,87 +92,119 @@ __meta__ = {
 }
 
 [node name="div" type="Label" parent="PlayerArea"]
-margin_left = 1182.0
-margin_top = 20.0
-margin_right = 1256.0
-margin_bottom = 124.0
+margin_left = 1146.0
+margin_top = 24.0
+margin_right = 1220.0
+margin_bottom = 128.0
 custom_fonts/font = SubResource( 1 )
 text = ":"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Yes" type="TextureButton" parent="PlayerArea"]
-margin_left = 482.0
+[node name="Button" type="TextureButton" parent="PlayerArea"]
+margin_left = 528.0
 margin_top = 34.0
-margin_right = 531.0
+margin_right = 718.0
 margin_bottom = 87.0
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 4 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label" type="Label" parent="PlayerArea/Yes"]
-margin_left = 9.0
-margin_top = 8.0
-margin_right = 49.0
-margin_bottom = 36.0
+[node name="label" type="Label" parent="PlayerArea/Button"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 192.0
+margin_bottom = 42.0
 custom_fonts/font = SubResource( 2 )
-text = "Sim"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Não é a letra!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="No" type="TextureButton" parent="PlayerArea"]
-margin_left = 748.0
-margin_top = 34.0
-margin_right = 797.0
-margin_bottom = 83.0
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label2" type="Label" parent="PlayerArea/No"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 49.0
-margin_bottom = 37.0
-custom_fonts/font = SubResource( 2 )
-text = "	Não"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="pts" type="Label" parent="PlayerArea"]
+[node name="palavra" type="Label" parent="PlayerArea"]
 margin_left = 48.0
 margin_top = -6.0
 margin_right = 100.0
 margin_bottom = 47.0
 custom_fonts/font = SubResource( 3 )
-text = "Pts"
+text = "Palavra"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="qtd_pts" type="Label" parent="PlayerArea"]
-margin_left = 52.0
-margin_top = 16.0
-margin_right = 92.0
-margin_bottom = 107.0
+[node name="p_num" type="Label" parent="PlayerArea/palavra"]
+margin_left = 42.0
+margin_top = 22.0
+margin_right = 82.0
+margin_bottom = 113.0
 custom_fonts/font = SubResource( 4 )
 text = "0"
 
+[node name="palavra2" type="Label" parent="PlayerArea"]
+margin_left = 48.0
+margin_top = -6.0
+margin_right = 167.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 3 )
+text = "Palavra"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p_num" type="Label" parent="PlayerArea/palavra2"]
+margin_left = 42.0
+margin_top = 22.0
+margin_right = 82.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="bateria" type="Label" parent="PlayerArea"]
+margin_left = 226.0
+margin_top = -6.0
+margin_right = 345.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 3 )
+text = "Bateria"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b_num" type="Label" parent="PlayerArea/bateria"]
+margin_left = 36.0
+margin_top = 22.0
+margin_right = 76.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="alvo" type="Label" parent="PlayerArea"]
+margin_left = 898.0
+margin_top = -4.0
+margin_right = 1017.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 3 )
+text = "Alvo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="letra_alvo" type="Label" parent="PlayerArea/alvo"]
+margin_left = 20.0
+margin_top = 26.0
+margin_right = 60.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 4 )
+text = "X"
+
 [node name="changeImage" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="mouse_entered" from="PlayerArea/Yes" to="." method="_on_Yes_mouse_entered"]
-[connection signal="mouse_exited" from="PlayerArea/Yes" to="." method="_on_Yes_mouse_exited"]
-[connection signal="pressed" from="PlayerArea/Yes" to="." method="_on_Yes_pressed"]
-[connection signal="mouse_entered" from="PlayerArea/No" to="." method="_on_No_mouse_entered"]
-[connection signal="mouse_exited" from="PlayerArea/No" to="." method="_on_No_mouse_exited"]
-[connection signal="pressed" from="PlayerArea/No" to="." method="_on_No_pressed"]
+[connection signal="mouse_entered" from="PlayerArea/Button" to="." method="_on_Yes_mouse_entered"]
+[connection signal="mouse_exited" from="PlayerArea/Button" to="." method="_on_Yes_mouse_exited"]
+[connection signal="pressed" from="PlayerArea/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="changeImage" to="." method="_on_changeImage_timeout"]

@@ -35,7 +35,14 @@ func shuffleSets():
 func updateImageQueue():
 	if(study.empty() and other.empty()):
 		var result = analizeAnswer();
-		PlayerResults.set_j3_result(result)
+		if(Configuracoes.j3_stage == 1):
+			#var result = analizeAnswer();
+			PlayerResults.set_j3_result_etapa1(result)
+			#get_tree().change_scene("res://Results.tscn")
+		elif(Configuracoes.j3_stage == 2):
+			PlayerResults.set_j3_result_etapa2(result)
+		else:
+			PlayerResults.set_j3_result_retencao(result)
 		get_tree().change_scene("res://Results.tscn")
 		
 	var a = study.pop_front()
@@ -51,7 +58,13 @@ func analizeAnswer():
 			errors+=1
 
 	var total_etapas = hits + errors
-	var used_time = str(displayValueMin)+":"+str(displayValueSec)
+	var minutes = str(displayValueMin)
+	var seconds = str(displayValueSec)
+	if(displayValueMin < 10):
+		minutes = "0"+minutes
+	if(displayValueSec < 10):
+		seconds = "0"+seconds
+	var used_time = str(minutes)+":"+str(seconds)
 	var result = [total_etapas, used_time, hits, errors]
 	
 	return result

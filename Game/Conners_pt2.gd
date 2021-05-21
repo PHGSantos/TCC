@@ -11,8 +11,10 @@ var letra
 onready var qtd_bateria = Configuracoes.j1_qtd_baterias
 onready var qtd_letras = Configuracoes.j1_qtd_letras_bateria
 onready var tempo_exibicao = Configuracoes.j1_tempo_exibicao
-var points = 0
+var hits = 0
+var errors = 0
 onready var letter_queue = Helper.fillLetterDeck(qtd_letras*qtd_bateria)
+var letra_alvo = 'X'
 
 func _ready():
 	updateImageQueue()
@@ -37,17 +39,14 @@ func imageTrigger(var curr_Value, var ref_value, var interval):
 	else:
 		return false;
 
-func _on_Yes_pressed():
-	if(letra.value == 'X'):
-		points+=1
-		get_node("PlayerArea/qtd_pts").set_text(str(points))
+func _on_Button_pressed():
+	if(letra.value != letra_alvo):
+		hits+=1
+		get_node("PlayerArea/qtd_pts").set_text(str(hits))
+	else:
+		errors+=1 
 	updateImageQueue()
 
-func _on_No_pressed():
-	if(letra.value != 'X'):
-		points+=1
-		get_node("PlayerArea/qtd_pts").set_text(str(points))
-	updateImageQueue()
 
 func _on_Timer_timeout():
 	displayValueSec+=1
@@ -75,3 +74,4 @@ func _on_changeImage_timeout():
 	changer+=1
 	if(changer==tempo_exibicao):
 		updateImageQueue()
+

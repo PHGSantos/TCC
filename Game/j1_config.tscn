@@ -52,6 +52,9 @@ __meta__ = {
 margin_left = 731.0
 margin_right = 805.0
 margin_bottom = 74.0
+min_value = 1.0
+max_value = 18.0
+value = 1.0
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,6 +82,10 @@ __meta__ = {
 margin_left = 739.0
 margin_right = 813.0
 margin_bottom = 74.0
+min_value = 10.0
+max_value = 50.0
+step = 10.0
+value = 10.0
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,18 +101,53 @@ __meta__ = {
 }
 
 [node name="label1" type="Label" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 424.0
+margin_right = 515.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "Tempo de exibição"
+text = "Tempo de exibição(s): "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="tempo" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 426.0
-margin_right = 500.0
+margin_left = 517.0
+margin_right = 591.0
 margin_bottom = 74.0
+min_value = 2.0
+max_value = 10.0
+step = 2.0
+value = 2.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 312.0
+margin_right = 1260.0
+margin_bottom = 386.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label1" type="Label" parent="VBoxContainer/HBoxContainer4"]
+margin_right = 509.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "Limite de tempo(min): "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="limite" type="SpinBox" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 511.0
+margin_right = 585.0
+margin_bottom = 74.0
+min_value = 1.0
+max_value = 14.0
+step = 1.0
+value = 14.0
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

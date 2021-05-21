@@ -85,7 +85,7 @@ func translateNumberToLetter(v):
 	elif v == 26:
 		return 'Z'
 	else:
-		return '$'	
+		return '$'
 
 func resetScene():
 	deleteNode("PlayerArea/texto")

@@ -15,10 +15,12 @@ func _on_Comecar_pressed():
 	var n = get_node("VBoxContainer/HBoxContainer/n_bat").value
 	var l = get_node("VBoxContainer/HBoxContainer2/n_let").value
 	var t = get_node("VBoxContainer/HBoxContainer3/tempo").value
+	var t2 = get_node("VBoxContainer/HBoxContainer4/limite").value
 		
 	Configuracoes.set_j1_qtd_baterias(n)
 	Configuracoes.set_j1_qtd_letras_bateria(l)
 	Configuracoes.set_j1_tempo_exibicao(t)
+	Configuracoes.set_j1_tempo_limite(t2)
 	Configuracoes.set_current_game(1)
 	
 	get_tree().change_scene("res://Conners.tscn")

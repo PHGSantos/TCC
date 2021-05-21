@@ -114,8 +114,6 @@ func fillImageDecks(var size):
 	var half = size%2
 	var a = arr.slice(0, half-1)
 	var b = arr.slice(half, size-1)
-	#print(a)
-	#print(b)
 
 func checkIfArrayIsUnique(myArray) :
 	for i in range(0, myArray.size(),1): 

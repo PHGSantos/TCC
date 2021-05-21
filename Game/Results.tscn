@@ -45,12 +45,36 @@ __meta__ = {
 }
 
 [node name="label" type="Label" parent="Salvar"]
-margin_left = 50.9116
+margin_left = 44.9116
 margin_top = -5.65686
-margin_right = 151.912
+margin_right = 145.912
 margin_bottom = 47.3431
 custom_fonts/font = SubResource( 1 )
 text = "Salvar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retencao" type="TextureButton" parent="."]
+visible = false
+margin_left = 563.73
+margin_top = 580.058
+margin_right = 753.73
+margin_bottom = 629.058
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="Retencao"]
+margin_left = 19.9116
+margin_top = -5.65686
+margin_right = 171.912
+margin_bottom = 47.3431
+custom_fonts/font = SubResource( 1 )
+text = "Retenção"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,4 +102,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Salvar" to="." method="_on_Salvar_pressed"]
+[connection signal="pressed" from="Retencao" to="." method="_on_Retencao_pressed"]
 [connection signal="pressed" from="Inicio" to="." method="_on_Inicio_pressed"]
