@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "MemoImg",
 "language": "GDScript",
 "path": "res://MemoImg.gd"
+}, {
+"base": "Resource",
+"class": "SaveFile",
+"language": "GDScript",
+"path": "res://SaveFile.gd"
 } ]
 _global_script_class_icons={
 "Letra": "",
-"MemoImg": ""
+"MemoImg": "",
+"SaveFile": ""
 }
 
 [application]

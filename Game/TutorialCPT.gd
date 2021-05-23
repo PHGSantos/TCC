@@ -9,8 +9,8 @@ var displayValueMin  = 0
 var changer
 var letra
 onready var qtd_bateria = Configuracoes.j1_qtd_baterias
-#onready var qtd_letras = Configuracoes.j1_qtd_letras_bateria
-onready var qtd_letras = 2
+onready var qtd_letras = Configuracoes.j1_qtd_letras_bateria
+#onready var qtd_letras = 2
 onready var tempo_exibicao = Configuracoes.j1_tempo_exibicao
 var hits = 0
 var errors = 0
@@ -38,7 +38,7 @@ func display_letra(var l):
 	letra.set_position(Vector2(500,150),false)
 	add_child(letra)
 	contador+=1
-	if(contador == 3):
+	if(contador == qtd_letras+1):
 		contador = 1
 	get_node("PlayerArea/letra/p_num").set_text(str(contador)+"/"+str(qtd_letras)) 
 	time_start = OS.get_unix_time()
@@ -88,7 +88,7 @@ func checkGameState(var source):
 	if(letter_queue.empty()):
 		bateria_Atual += 1
 		if(bateria_Atual > qtd_bateria):
-			get_tree().change_scene("res://Results.tscn")
+			get_tree().change_scene("res://j1_config.tscn")
 		else:
 			updateBateria(bateria_Atual)
 	else:

@@ -6,6 +6,7 @@ onready var screen = get_node(".")
 onready var grid = get_node("grid")
 var dynamic_font
 var retencao
+var current_save = 0
 
 func _ready():
 	
@@ -23,15 +24,32 @@ func _ready():
 		displayResultsJ2()
 	
 	elif(Configuracoes.current_game == 3):
-		#result = PlayerResults.j3_result
 		displayResultsJ3()
 	
 	else:
 		print("Que jogo é esse?!")
 
 func displayResultsJ1():
+	var label1 = Label.new()
+	label1.set_text("Tempo de jogo (seg.): "+str(result[0]))
+	label1.set("custom_fonts/font", dynamic_font)
 	
-	pass
+	var label2 = Label.new()
+	label2.set_text("Total de acertos: "+str(result[1]))
+	label2.set("custom_fonts/font", dynamic_font)
+	
+	var label3 = Label.new()
+	label3.set_text("Total de erros: "+str(result[2]))
+	label3.set("custom_fonts/font", dynamic_font)
+	
+	var label4 = Label.new()
+	label4.set_text("Total de erros por omissão: "+str(result[3]))
+	label4.set("custom_fonts/font", dynamic_font)
+	
+	grid.add_child(label1)
+	grid.add_child(label2)
+	grid.add_child(label3)
+	grid.add_child(label4)
 
 
 func displayResultsJ2():
@@ -115,8 +133,14 @@ func isRetencao():
 		return  true
 
 func _on_Salvar_pressed():
-	pass # Replace with function body.
+	var save_file = SaveFile.new()
+	save_file.name = "Pedro"
+	var f_name = "resultado"+current_save+".tres"
+	ResourceSaver.save("res://Saved Files/"+f_name, save_file)
 
+func load_config():
+	#var save: = preload("res://Saved Files/config.tres")
+	pass
 
 func _on_Inicio_pressed():
 	if (Configuracoes.j3_stage == 1): #volta pro estudo p/ etapa 2
@@ -124,7 +148,6 @@ func _on_Inicio_pressed():
 		get_tree().change_scene("res://TOMM.tscn")
 	else:	
 		get_tree().change_scene("res://MenuPrincipal.tscn")
-
 
 func _on_Retencao_pressed():
 	Configuracoes.set_j3_stage(3)
