@@ -7,7 +7,7 @@ var current_game
 var j1_qtd_baterias:int = 1
 var j1_qtd_letras_bateria:int = 10
 var j1_tempo_exibicao:int = 4 
-var j1_limite_tempo = 14
+var j1_tempo_limite = 14
 
 #configurações J2
 var j2_cores_possiveis = Array()
@@ -35,8 +35,8 @@ func set_j1_qtd_letras_bateria(var l):
 func set_j1_tempo_exibicao(var t):
 	self.j1_tempo_exibicao = t
 	
-func set_j1_limite_tempo(var t2):
-	self.j1_limite_tempo = t2
+func set_j1_tempo_limite(var t2):
+	self.j1_tempo_limite = t2
 
 func set_j2_cores_possiveis(var cores):
 	self.j2_cores_possiveis = cores
