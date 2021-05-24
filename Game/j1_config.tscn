@@ -32,7 +32,7 @@ __meta__ = {
 margin_right = 1260.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
-text = "CONFIGURAÇÕES: JOGO 1"
+text = "CONFIGURAÇÕES: CPT"
 __meta__ = {
 "_edit_use_anchors_": false
 }

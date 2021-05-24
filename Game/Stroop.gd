@@ -153,29 +153,39 @@ func finishTest():
 	if(nome_teste == "Reconhecimento de Cores"):
 		gabarito = possible_colors.duplicate()
 		qtd = 4
+		result = analizeAnswer(qtd, gabarito)
+		PlayerResults.set_j2_result(result)
+		get_tree().change_scene("res://j2_config.tscn")
 		 
 	elif(nome_teste == "Tutorial: Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = 4
-	
+		result = analizeAnswer(qtd, gabarito)
+		PlayerResults.set_j2_result(result)
+		get_tree().change_scene("res://j2_config.tscn")
+		
 	elif(nome_teste == "Tutorial: Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = 4
-	
+		result = analizeAnswer(qtd, gabarito)
+		PlayerResults.set_j2_result(result)
+		get_tree().change_scene("res://j2_config.tscn")
+		
 	elif(nome_teste == "Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = answer.size()
-	
+		result = analizeAnswer(qtd, gabarito)
+		PlayerResults.set_j2_result(result)
+		get_tree().change_scene("res://Results.tscn")
 	elif(nome_teste == "Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = answer.size()
-	
+		result = analizeAnswer(qtd, gabarito)
+		PlayerResults.set_j2_result(result)
+		get_tree().change_scene("res://Results.tscn")
 	else:
 		print("teste inexistente")
 		
-	result = analizeAnswer(qtd, gabarito)
-	PlayerResults.set_j2_result(result)
-	get_tree().change_scene("res://Results.tscn")
 		
 
 func compareAnswer(var qtd, var gabarito):

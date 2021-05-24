@@ -10,10 +10,14 @@ var current = 1
 onready var img = get_node("img")
 
 func _ready():
-	qtd_imagens = Configuracoes.j3_qtd_imagens
+	if(Configuracoes.j3_tipo == "TOMM"):
+		qtd_imagens = 100
+	else:
+		qtd_imagens = Configuracoes.j3_qtd_imagens
+	
 	study_set_copy = Configuracoes.j3_study_set.duplicate()
 	other_set_copy = Configuracoes.j3_other_set.duplicate()
-	img.set_position(Vector2(300,300))
+	img.set_position(Vector2(500,200))
 	timer.set_wait_time(3)
 	timer.start()
 
@@ -23,7 +27,7 @@ func displayImage():
 	if (current-1 < study_set_copy.size()): #por alguma razão ele faz uma iteração a mais
 		var v = study_set_copy[current-1]
 		var face = load('res://Memo/'+str(v)+'.png')
-		face = Helper.get_resized_texture(face,50,50)
+		face = Helper.get_resized_texture(face,300,300)
 		img.texture = face
 	
 	#update counter

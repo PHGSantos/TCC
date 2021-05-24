@@ -6,7 +6,9 @@ onready var screen = get_node(".")
 onready var grid = get_node("grid")
 var dynamic_font
 var retencao
-var current_save = 0
+var last_save_number
+const FILE_NAME = "res://Saved Files/game_save.json"
+var content
 
 func _ready():
 	
@@ -74,10 +76,8 @@ func displayResultsJ2():
 	grid.add_child(label3)
 	grid.add_child(label4)
 
-
 func displayResultsJ3():
 	var stage = Configuracoes.j3_stage
-	var s
 	if(stage == 1):
 		result = PlayerResults.j3_result_etapa1
 		get_node("Inicio/label").set_text("Etapa 2")
@@ -133,14 +133,37 @@ func isRetencao():
 		return  true
 
 func _on_Salvar_pressed():
-	var save_file = SaveFile.new()
-	save_file.name = "Pedro"
-	var f_name = "resultado"+current_save+".tres"
-	ResourceSaver.save("res://Saved Files/"+f_name, save_file)
+	content = {
+		"save_number": 0,
+		"CPT": {
+			"time": result[0],
+			"hits": result[1],
+			"erros": result[2],
+			"omission_errors": result[3]
+			}
+	}
+	save(content)
+	load_file()
 
-func load_config():
-	#var save: = preload("res://Saved Files/config.tres")
-	pass
+func save(content):
+	var file = File.new()
+	file.open(FILE_NAME, File.WRITE)
+	file.store_string(to_json(content))
+	file.close()
+
+func load_file():
+	var file = File.new()
+	if file.file_exists(FILE_NAME):
+		file.open(FILE_NAME, File.READ)
+		var data = parse_json(file.get_as_text())
+		file.close()
+		if typeof(data) == TYPE_DICTIONARY:
+			content = data
+			print(content)
+		else:
+			printerr("Corrupted data!")
+	else:
+		printerr("No saved data!")
 
 func _on_Inicio_pressed():
 	if (Configuracoes.j3_stage == 1): #volta pro estudo p/ etapa 2
@@ -152,4 +175,4 @@ func _on_Inicio_pressed():
 func _on_Retencao_pressed():
 	Configuracoes.set_j3_stage(3)
 	get_tree().change_scene("res://TOMM_pt2.tscn")
-	
+

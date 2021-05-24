@@ -19,6 +19,7 @@ var j3_qtd_imagens:int = 4
 var j3_stage
 var j3_study_set
 var j3_other_set
+var j3_tipo
 
 func _ready():
 	pass # Replace with function body.
@@ -46,6 +47,9 @@ func set_j2_tipo_teste(var t):
 	
 func set_j2_nome_teste(var n):
 	self.j2_nome_teste = n
+
+func set_j3_tipo(var tipo):
+	self.j3_tipo = tipo
 
 func set_j3_qtd_imagens(var i):
 	self.j3_qtd_imagens = i

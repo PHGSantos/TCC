@@ -130,3 +130,17 @@ func get_resized_texture(t: Texture, width: int = 0, height: int = 0):
 	var itex = ImageTexture.new()
 	itex.create_from_image(image)
 	return itex	
+
+func list_files_in_directory(path):
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin()
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif file.ends_with(".png"):
+			files.append(file)
+	dir.list_dir_end()
+	return files

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "GameSettings",
+"language": "GDScript",
+"path": "res://GameSettings.gd"
+}, {
 "base": "TextureRect",
 "class": "Letra",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://SaveFile.gd"
 } ]
 _global_script_class_icons={
+"GameSettings": "",
 "Letra": "",
 "MemoImg": "",
 "SaveFile": ""

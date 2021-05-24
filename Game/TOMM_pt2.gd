@@ -36,14 +36,17 @@ func updateImageQueue():
 	if(study.empty() and other.empty()):
 		var result = analizeAnswer();
 		if(Configuracoes.j3_stage == 1):
-			#var result = analizeAnswer();
 			PlayerResults.set_j3_result_etapa1(result)
 			#get_tree().change_scene("res://Results.tscn")
 		elif(Configuracoes.j3_stage == 2):
 			PlayerResults.set_j3_result_etapa2(result)
 		else:
 			PlayerResults.set_j3_result_retencao(result)
-		get_tree().change_scene("res://Results.tscn")
+		
+		if(Configuracoes.j3_tipo == "TOMM"):
+			get_tree().change_scene("res://Results.tscn")
+		else:
+			get_tree().change_scene("res://j3_config.tscn")
 		
 	var a = study.pop_front()
 	var b = other.pop_front()
@@ -75,12 +78,12 @@ func display_images(var a, var b):
 		for child in images.get_children():
 			child.queue_free()
 
-	var img1 = MemoImg.new(a, 50, 50)
-	var img2 = MemoImg.new(b, 50, 50)
+	var img1 = MemoImg.new(a, 300, 300)
+	var img2 = MemoImg.new(b, 300, 300)
 	img1.set_name('img1')
 	img2.set_name('img2')
-	var pos_esquerda = Vector2(500,150)
-	var pos_direita = Vector2(1000,150)
+	var pos_esquerda = Vector2(300,200)
+	var pos_direita = Vector2(700,200)
 	images.add_child(img1)
 	images.add_child(img2)
 	
