@@ -17,6 +17,7 @@ var errors = 0
 var hits = 0
 
 func _ready():
+	set_process_input(true)
 	shuffleSets()
 	gabarito = Array()
 	images = get_node("Images")
@@ -33,7 +34,7 @@ func shuffleSets():
 	other.shuffle()
 
 func updateImageQueue():
-	if(study.empty() and other.empty()):
+	if(study.empty() or other.empty()):
 		var result = analizeAnswer();
 		if(Configuracoes.j3_stage == 1):
 			PlayerResults.set_j3_result_etapa1(result)
@@ -47,11 +48,13 @@ func updateImageQueue():
 			get_tree().change_scene("res://Results.tscn")
 		else:
 			get_tree().change_scene("res://j3_config.tscn")
-		
-	var a = study.pop_front()
-	var b = other.pop_front()
-	display_images(a,b)
-	#changer = 0
+	else:	
+		var a = study.pop_front()
+		var b = other.pop_front()
+		if(a == null or b == null):
+			print(a+"/"+b)
+		else:
+			display_images(a,b)
 
 func analizeAnswer():
 	for i in range (0,gabarito.size(),1):
@@ -74,6 +77,8 @@ func analizeAnswer():
 
 
 func display_images(var a, var b):
+	print(a)
+	print(b)
 	if (images.get_child_count() > 0):
 		for child in images.get_children():
 			child.queue_free()
@@ -126,10 +131,11 @@ func _on_Timer_timeout():
 			else:
 				minute.set_text(str(displayValueMin))
 
-func _on_Esquerda_pressed():
-	answers.append("Esquerda")
-	updateImageQueue()
-
-func _on_Direita_pressed():
-	answers.append("Direita")
-	updateImageQueue()
+#check project>settings>input map
+func _input(ev):
+	if (ev.is_action_pressed('ui_left')):
+		answers.append("Esquerda")
+		updateImageQueue()
+	elif (ev.is_action_pressed('ui_right')):
+		answers.append("Direita")
+		updateImageQueue()

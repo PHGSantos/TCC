@@ -26,7 +26,8 @@ func displayImage():
 	#print("study["+str(current-1)+"]")
 	if (current-1 < study_set_copy.size()): #por alguma razão ele faz uma iteração a mais
 		var v = study_set_copy[current-1]
-		var face = load('res://Memo/'+str(v)+'.png')
+		#var face = load('res://Memo/'+str(v)+'.png')
+		var face = load('res://Memo/'+v)
 		face = Helper.get_resized_texture(face,300,300)
 		img.texture = face
 	

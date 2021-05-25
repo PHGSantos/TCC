@@ -11,7 +11,7 @@ func _ready():
 
 func _init(var v, var width, var height):
 	value = v
-	face = load('res://Memo/'+str(value)+'.png')
+	face = load('res://Memo/'+value)
 	face = get_resized_texture(face,width,height)
 	self.texture = face
 

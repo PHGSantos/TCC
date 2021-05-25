@@ -1,26 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://buttons/blue_button06.png" type="Texture" id=1]
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://TOMM_pt2.gd" type="Script" id=3]
-[ext_resource path="res://buttons/green_button06.png" type="Texture" id=4]
-[ext_resource path="res://buttons/yellow_button06.png" type="Texture" id=5]
-[ext_resource path="res://buttons/red_button03.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-outline_size = 2
-outline_color = Color( 0.0784314, 0.494118, 0.894118, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 52
 font_data = ExtResource( 2 )
 
@@ -97,60 +88,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Esquerda" type="TextureButton" parent="PlayerArea"]
-margin_left = 482.0
-margin_top = 34.0
-margin_right = 531.0
-margin_bottom = 87.0
-rect_scale = Vector2( 2.2, 1 )
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label" type="Label" parent="PlayerArea"]
-margin_left = 495.0
-margin_top = 42.0
-margin_right = 574.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 2 )
-text = "Esquerda"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Direita" type="TextureButton" parent="PlayerArea"]
-margin_left = 748.0
-margin_top = 34.0
-margin_right = 797.0
-margin_bottom = 83.0
-rect_scale = Vector2( 2.16, 1 )
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label2" type="Label" parent="PlayerArea"]
-margin_left = 773.0
-margin_top = 43.0
-margin_right = 829.0
-margin_bottom = 71.0
-custom_fonts/font = SubResource( 2 )
-text = "	Direita"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="pts" type="Label" parent="PlayerArea"]
 margin_left = 48.0
 margin_top = -6.0
 margin_right = 100.0
 margin_bottom = 47.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Pts"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,10 +104,8 @@ margin_left = 52.0
 margin_top = 16.0
 margin_right = 92.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 
 [node name="changeImage" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="PlayerArea/Esquerda" to="." method="_on_Esquerda_pressed"]
-[connection signal="pressed" from="PlayerArea/Direita" to="." method="_on_Direita_pressed"]

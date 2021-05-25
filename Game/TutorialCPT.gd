@@ -16,13 +16,14 @@ var hits = 0
 var errors = 0
 var omission_errors = 0
 var letter_queue
-var letra_alvo = 'X'
+var letra_alvo = 'letter_X'
 var bateria_Atual
 var contador = 0
 var time_start = 0
 var time_now = 0
 
 func _ready():
+	set_process_input(true)
 	bateria_Atual = 1
 	updateBateria(bateria_Atual)
 	updateImageQueue()
@@ -33,7 +34,7 @@ func updateImageQueue():
 	display_letra(letter_queue.pop_front())
 
 func display_letra(var l):
-	letra = Letra.new('Blue','letter_'+l,300,300)
+	letra = Letra.new(l,300,300)
 	letra.set_name('Letra')
 	letra.set_position(Vector2(500,150),false)
 	add_child(letra)
@@ -45,10 +46,18 @@ func display_letra(var l):
 
 func updateBateria(var n):
 	#reseta as letras
-	letter_queue = Helper.fillLetterDeck(qtd_letras)
+	#letter_queue = Helper.fillLetterDeck(qtd_letras)
 	#muda a label da bateria
+	#get_node("PlayerArea/bateria/b_num").set_text(str(n))
+	var path = 'res://letter_tiles/PNG/Blue/'
+	var array = Helper.list_files_in_directory(path)
+	randomize()
+	array.shuffle()
+	letter_queue = array.slice(0, qtd_letras-1, 1, false)
 	get_node("PlayerArea/bateria/b_num").set_text(str(n))
-
+	
+	
+	
 func _on_Timer_timeout():
 	displayValueSec+=1
 	if(displayValueSec < 10):
@@ -80,7 +89,7 @@ func getElapsedTime():
 	return time_elapsed
 
 func _input(ev):
-	if Input.is_key_pressed(KEY_SPACE):
+	if ev.is_action_pressed('ui_select'):
 		checkGameState("button")
 		
 
@@ -107,3 +116,4 @@ func checkAnswer(var source):
 		else:
 			errors+=1
 			omission_errors+=1
+	#print(letra.value+'/'+letra_alvo)

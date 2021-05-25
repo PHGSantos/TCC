@@ -2,9 +2,9 @@ extends TextureRect
 
 class_name Letra
 
-var color
-var value
+var file_name
 var face
+var value 
 
 func _ready():
 	pass
@@ -20,9 +20,10 @@ func get_resized_texture(t: Texture, width: int = 0, height: int = 0):
 func modulate_texture(it:ImageTexture, var r, var g, var b):
 	it.modulate(r,g,b)
 
-func _init(var c, var v, var width, var height):
-	color = c
-	value = v
-	face = load('res://letter_tiles/PNG/'+c+'/'+value+'.png')
+func _init(var p, var width, var height):
+	file_name = p
+	var aux = p.split('.',true,1)
+	value = aux[0]
+	face = load('res://letter_tiles/PNG/Blue/'+file_name)
 	face = get_resized_texture(face,width,height)
 	self.texture = face

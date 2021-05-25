@@ -135,6 +135,19 @@ text = "Começar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="erro" type="Label" parent="."]
+visible = false
+margin_left = 23.0
+margin_top = 312.0
+margin_right = 1241.0
+margin_bottom = 386.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.862745, 0.0980392, 0.0980392, 1 )
+text = "Erro: A pasta Memo deve ter pelo menos 100 imagens"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer0/dropdown" to="." method="_on_dropdown_item_selected"]
 [connection signal="mouse_entered" from="Voltar" to="." method="_on_Voltar_mouse_entered"]
 [connection signal="mouse_exited" from="Voltar" to="." method="_on_Voltar_mouse_exited"]
