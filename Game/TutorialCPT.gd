@@ -45,10 +45,6 @@ func display_letra(var l):
 	time_start = OS.get_unix_time()
 
 func updateBateria(var n):
-	#reseta as letras
-	#letter_queue = Helper.fillLetterDeck(qtd_letras)
-	#muda a label da bateria
-	#get_node("PlayerArea/bateria/b_num").set_text(str(n))
 	var path = 'res://letter_tiles/PNG/Blue/'
 	var array = Helper.list_files_in_directory(path)
 	randomize()
@@ -100,6 +96,7 @@ func checkGameState(var source):
 			get_tree().change_scene("res://j1_config.tscn")
 		else:
 			updateBateria(bateria_Atual)
+			updateImageQueue()
 	else:
 		checkAnswer(source)
 		updateImageQueue()

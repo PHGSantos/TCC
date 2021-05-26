@@ -84,6 +84,7 @@ func createImageSets(var total_imgs):
 	var path = 'res://Memo/'
 	var array = Helper.list_files_in_directory(path)
 	#garantindo numero par de imagens no vetor
+	print(array.size())
 	if(array.size() < total_imgs):
 		error = true;
 		get_node("erro").set_text('A pasta Memo deve ter pelo menos '+str(total_imgs)+' imagens')
