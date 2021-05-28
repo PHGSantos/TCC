@@ -47,7 +47,7 @@ func display_letra(var l):
 	time_start = OS.get_unix_time()
 
 func updateBateria(var n):
-	var path = 'res://letter_tiles/PNG/Blue/'
+	var path = 'res://letter_tiles/PNG/Yellow/'
 	var array = Helper.list_files_in_directory(path)
 	randomize()
 	array.shuffle()

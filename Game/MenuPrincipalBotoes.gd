@@ -9,7 +9,7 @@ func _on_J1_pressed():
 	get_tree().change_scene("res://J1_config.tscn")
 
 func _on_J1_mouse_entered():
-	sprite1.modulate = Color(0.7,0.7,0.7)
+	sprite1.modulate = Color(0.9,0.9,0.9)
 
 
 func _on_J1_mouse_exited():
@@ -20,7 +20,7 @@ func _on_J2_pressed():
 	get_tree().change_scene("res://j2_config.tscn")
 
 func _on_J2_mouse_entered():
-	sprite2.modulate = Color(0.7,0.7,0.7)
+	sprite2.modulate = Color(0.9,0.9,0.9)
 
 func _on_J2_mouse_exited():
 	sprite2.modulate = Color(1,1,1)
@@ -30,7 +30,7 @@ func _on_J3_pressed():
 	get_tree().change_scene("res://j3_config.tscn")
 
 func _on_J3_mouse_entered():
-	sprite3.modulate = Color(0.7,0.7,0.7)
+	sprite3.modulate = Color(0.9,0.9,0.9)
 
 func _on_J3_mouse_exited():
 	sprite3.modulate = Color(1,1,1)

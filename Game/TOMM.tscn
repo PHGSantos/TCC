@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1280.0
 margin_bottom = 720.0
-color = Color( 0.240463, 0.597656, 0.388363, 1 )
+color = Color( 0.756863, 0.843137, 0.682353, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,7 +45,7 @@ margin_bottom = 40.0
 margin_top = 570.0
 margin_right = 1280.0
 margin_bottom = 720.0
-color = Color( 0.0784314, 0.494118, 0.894118, 1 )
+color = Color( 0.54902, 0.752941, 0.517647, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
