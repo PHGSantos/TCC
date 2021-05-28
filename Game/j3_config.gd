@@ -41,22 +41,9 @@ func _on_Comecar_pressed():
 		get_tree().change_scene("res://TOMM.tscn")
 
 
-func _on_Comecar_mouse_entered():
-	sprite1.modulate = Color(0.7,0.7,0.7)
-
-
-func _on_Comecar_mouse_exited():
-	sprite1.modulate = Color(1,1,1)
-
 func _on_Voltar_pressed():
 	sprite2.modulate = Color(0.5,0.5,0.5)
 	get_tree().change_scene("res://MenuPrincipal.tscn")
-
-func _on_Voltar_mouse_entered():
-	sprite2.modulate = Color(0.7,0.7,0.7)
-
-func _on_Voltar_mouse_exited():
-	sprite2.modulate = Color(1,1,1)
 
 func createImageSets1(var size):
 	var arr = Array()

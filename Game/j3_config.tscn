@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://buttons/blue_button00.png" type="Texture" id=2]
+[ext_resource path="res://buttons/buttonLong_beige.png" type="Texture" id=2]
+[ext_resource path="res://buttons/buttonLong_beige_pressed.png" type="Texture" id=3]
+[ext_resource path="res://buttons/buttonLong_brown.png" type="Texture" id=4]
 [ext_resource path="res://j3_config.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -94,50 +96,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Voltar" type="Button" parent="."]
+[node name="Voltar" type="TextureButton" parent="."]
 margin_left = 234.0
 margin_top = 432.0
 margin_right = 534.0
 margin_bottom = 512.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Voltar"]
-position = Vector2( 148, 40 )
-scale = Vector2( 1.60897, 1.6613 )
-texture = ExtResource( 2 )
-
 [node name="lab_voltar" type="Label" parent="Voltar"]
-margin_left = 65.0
-margin_top = -2.0
-margin_right = 285.0
-margin_bottom = 72.0
+margin_left = 27.0
+margin_top = -18.0
+margin_right = 247.0
+margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
 text = "Voltar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Comecar" type="Button" parent="."]
+[node name="Comecar" type="TextureButton" parent="."]
 margin_left = 744.0
 margin_top = 434.0
 margin_right = 1044.0
 margin_bottom = 514.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Comecar"]
-position = Vector2( 148, 40 )
-scale = Vector2( 1.60897, 1.6613 )
-texture = ExtResource( 2 )
-
 [node name="lab_começar" type="Label" parent="Comecar"]
-margin_left = 45.0
-margin_top = -2.0
-margin_right = 265.0
-margin_bottom = 72.0
+margin_left = -5.0
+margin_top = -16.0
+margin_right = 215.0
+margin_bottom = 58.0
 custom_fonts/font = SubResource( 1 )
 text = "Começar"
 __meta__ = {
@@ -157,9 +155,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer0/dropdown" to="." method="_on_dropdown_item_selected"]
-[connection signal="mouse_entered" from="Voltar" to="." method="_on_Voltar_mouse_entered"]
-[connection signal="mouse_exited" from="Voltar" to="." method="_on_Voltar_mouse_exited"]
 [connection signal="pressed" from="Voltar" to="." method="_on_Voltar_pressed"]
-[connection signal="mouse_entered" from="Comecar" to="." method="_on_Comecar_mouse_entered"]
-[connection signal="mouse_exited" from="Comecar" to="." method="_on_Comecar_mouse_exited"]
 [connection signal="pressed" from="Comecar" to="." method="_on_Comecar_pressed"]

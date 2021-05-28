@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://buttons/blue_button00.png" type="Texture" id=2]
-[ext_resource path="res://buttons/blue_button02.png" type="Texture" id=3]
-[ext_resource path="res://buttons/blue_button05.png" type="Texture" id=4]
+[ext_resource path="res://buttons/buttonLong_beige.png" type="Texture" id=2]
+[ext_resource path="res://buttons/buttonLong_beige_pressed.png" type="Texture" id=3]
+[ext_resource path="res://buttons/buttonLong_brown.png" type="Texture" id=4]
 [ext_resource path="res://j2_config.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -203,8 +203,8 @@ margin_top = 540.0
 margin_right = 718.0
 margin_bottom = 589.0
 texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -226,8 +226,8 @@ margin_top = 540.0
 margin_right = 962.0
 margin_bottom = 589.0
 texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
