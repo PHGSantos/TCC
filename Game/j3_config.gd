@@ -24,7 +24,6 @@ func add_items():
 	dropdown.select(0) #default
 
 func _on_Comecar_pressed():
-	sprite1.modulate = Color(0.5,0.5,0.5)
 	
 	var n
 	if(dropdown.get_selected_id() == 0):#tutorial

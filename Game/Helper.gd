@@ -140,7 +140,7 @@ func list_files_in_directory(path):
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif file.ends_with(".png"):
+		elif file.ends_with(".png") or file.ends_with(".jpg"):
 			files.append(file)
 	dir.list_dir_end()
 	return files
