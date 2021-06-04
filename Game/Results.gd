@@ -6,11 +6,14 @@ onready var screen = get_node(".")
 onready var grid = get_node("grid")
 var dynamic_font
 var retencao
-var last_save_number
-const FILE_NAME = "res://Saved Files/game_save.json"
-var content
+var date
+var time
+#const FILE_NAME = "res://Saved Files/game_save.json"
 
 func _ready():
+	var t = OS.get_datetime()
+	date = t["year"]+'/'+t["month"]+'/'+t["day"]
+	time = t["hour"]+':'+t["minute"]+':'+t["second"]
 	
 	dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")
@@ -52,7 +55,6 @@ func displayResultsJ1():
 	grid.add_child(label2)
 	grid.add_child(label3)
 	grid.add_child(label4)
-
 
 func displayResultsJ2():
 	var label1 = Label.new()
@@ -133,25 +135,56 @@ func isRetencao():
 		return  true
 
 func _on_Salvar_pressed():
-	content = {
+	var content = ''
+	if(Configuracoes.current_game == 1):
+		content = {
 		"save_number": 0,
-		"CPT": {
+		"Game": {
+			"test_name": "Conners Performance Test",
 			"time": result[0],
 			"hits": result[1],
-			"erros": result[2],
+			"errors": result[2],
 			"omission_errors": result[3]
 			}
 	}
+	
+	elif(Configuracoes.current_game == 2):
+		content = {
+		"save_number": 0,
+		"Game": {
+			"test_name": "Teste de Stroop",
+			"time": result[0],
+			"hits": result[1],
+			"errors": result[2],
+			"omission_errors": result[3]
+			}
+	}
+	
+	else:
+		content = {
+		"save_number": 0,
+		"Game": {
+			"test_name": "Test Of Memory Malingering",
+			"time": result[0],
+			"hits": result[1],
+			"errors": result[2],
+			"omission_errors": result[3]
+			}
+	}
+	
 	save(content)
 	load_file()
 
-func save(content):
+func save(var content):
+	var FILE_NAME = "res://Saves Files/game_result.json";
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
 	file.store_string(to_json(content))
 	file.close()
 
 func load_file():
+	var content
+	var FILE_NAME = "res://Saves Files/game_result.json";
 	var file = File.new()
 	if file.file_exists(FILE_NAME):
 		file.open(FILE_NAME, File.READ)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Results.gd" type="Script" id=1]
-[ext_resource path="res://buttons/blue_button02.png" type="Texture" id=2]
-[ext_resource path="res://buttons/blue_button03.png" type="Texture" id=3]
-[ext_resource path="res://buttons/blue_button00.png" type="Texture" id=4]
+[ext_resource path="res://buttons/buttonLong_beige.png" type="Texture" id=2]
+[ext_resource path="res://buttons/buttonLong_beige_pressed.png" type="Texture" id=3]
+[ext_resource path="res://buttons/buttonLong_brown_pressed.png" type="Texture" id=4]
 [ext_resource path="res://OpenDyslexic/OpenDyslexic-Bold.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -12,6 +12,14 @@ font_data = ExtResource( 5 )
 
 [node name="Screen" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.709804, 0.866667, 0.643137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="nome_do_jogo" type="Label" parent="."]
 margin_left = 642.053
@@ -37,8 +45,8 @@ margin_left = 251.73
 margin_top = 581.058
 margin_right = 441.73
 margin_bottom = 630.058
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 2 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,8 +69,8 @@ margin_left = 563.73
 margin_top = 580.058
 margin_right = 753.73
 margin_bottom = 629.058
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 2 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -84,8 +92,8 @@ margin_left = 879.641
 margin_top = 581.401
 margin_right = 1069.64
 margin_bottom = 630.401
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 2 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
