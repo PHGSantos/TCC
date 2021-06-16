@@ -57,7 +57,7 @@ func _on_Voltar_pressed():
 	get_tree().change_scene("res://MenuPrincipal.tscn")
 
 #func on_item_selected(id):
-#	print(str(dropdown.get_item_text(id)))
+#	
 	
 #d é qualquer um dos dropdown	
 func get_selected_item(var d):

@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1280.0
 margin_bottom = 720.0
-color = Color( 0.976471, 0.92549, 0.8, 1 )
+color = Color( 0.345098, 0.490196, 0.443137, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -55,7 +55,7 @@ margin_top = 570.0
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_scale = Vector2( 1, 1.03984 )
-color = Color( 0.345098, 0.490196, 0.443137, 1 )
+color = Color( 0.709804, 0.866667, 0.643137, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

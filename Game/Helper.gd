@@ -12,7 +12,6 @@ func get_random_number(from, to):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randi_range(from,to)
-	#print(str(my_random_number))
 	return my_random_number
 
 func translateNumberToLetter(v):
@@ -64,9 +63,9 @@ func translateNumberToLetter(v):
 		return 'W'
 	elif v == 24:
 		return 'X'
-	elif v == 25:
+	elif v == 24:
 		return 'Y'
-	elif v == 26:
+	elif v == 25:
 		return 'Z'
 	else:
 		return '$'	
@@ -99,7 +98,6 @@ func fillLetterDeck(var size):
 		var n = get_random_number(1,25)
 		var letra = translateNumberToLetter(n)
 		deck.append(letra)
-		#print(letra)
 	return deck
 
 func fillImageDecks(var size):

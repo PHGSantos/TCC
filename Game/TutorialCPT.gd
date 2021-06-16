@@ -45,15 +45,29 @@ func display_letra(var l):
 	time_start = OS.get_unix_time()
 
 func updateBateria(var n):
-	var path = 'res://letter_tiles/PNG/Blue/'
+	var path = 'res://letter_tiles/'
 	var array = Helper.list_files_in_directory(path)
 	randomize()
 	array.shuffle()
 	letter_queue = array.slice(0, qtd_letras-1, 1, false)
+	var ok = checkTargetLetter()
+	if(ok == false):
+		fixLetterQueue()
 	get_node("PlayerArea/bateria/b_num").set_text(str(n))
 	
 	
-	
+func checkTargetLetter():
+	var counter = 0
+	for letter in letter_queue:
+		if(letter == 'letter_X.png'):
+			return true
+	return false
+
+func fixLetterQueue():
+	var rng = Helper.get_random_number(0, letter_queue.size() -1)
+	letter_queue[rng] = 'letter_X.png'
+	print(letter_queue)
+
 func _on_Timer_timeout():
 	displayValueSec+=1
 	if(displayValueSec < 10):
@@ -87,18 +101,21 @@ func getElapsedTime():
 func _input(ev):
 	if ev.is_action_pressed('ui_select'):
 		checkGameState("button")
-		
 
 func checkGameState(var source):
+	checkAnswer(source)
 	if(letter_queue.empty()):
 		bateria_Atual += 1
 		if(bateria_Atual > qtd_bateria):
-			get_tree().change_scene("res://j1_config.tscn")
+			var tempo_de_jogo = get_played_time()
+			var result = [tempo_de_jogo, hits, errors, omission_errors]
+			PlayerResults.set_j1_result(result)
+			get_tree().change_scene("res://Results.tscn")
 		else:
 			updateBateria(bateria_Atual)
 			updateImageQueue()
 	else:
-		checkAnswer(source)
+		#checkAnswer(source)
 		updateImageQueue()
 		
 func checkAnswer(var source):
@@ -113,4 +130,16 @@ func checkAnswer(var source):
 		else:
 			errors+=1
 			omission_errors+=1
-	#print(letra.value+'/'+letra_alvo)
+	
+func get_played_time():
+	var s = displayValueSec
+	var m = displayValueMin
+	if(s < 10):
+		s = "0"+str(displayValueSec)
+	else:
+		s = str(displayValueSec)
+	if(m < 10):
+		m = "0"+str(displayValueMin)
+	else:
+		m = str(displayValueMin)
+	return m+":"+s

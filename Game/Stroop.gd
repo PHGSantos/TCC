@@ -10,8 +10,8 @@ var tipo_teste
 var nome_teste
 var current = 0
 var maximum = 112
-var tempo = 10#120
-var max_tempo =10#120
+var tempo = 120
+var max_tempo =120
 
 
 #TIPOS DE TESTE
@@ -22,9 +22,6 @@ func _ready():
 	possible_colors = Configuracoes.j2_cores_possiveis
 	tipo_teste = Configuracoes.j2_tipo_teste
 	nome_teste = Configuracoes.j2_nome_teste
-	print(possible_colors)
-	print(tipo_teste)
-	print(nome_teste)
 	etapa = 1
 	answer = Array()
 	words = Array()
@@ -105,18 +102,15 @@ func testeTipo2():
 	c = arr[rng]
 	arr.remove(rng)
 	colors.append(c)
-	
-	#print('etapa: '+str(etapa))
-	#print('words['+str(current)+'] = '+words[current])
-	#print('colors['+str(current)+'] = '+colors[current])
-	#clear_console()
-	#current+=1
 
 func setSceneLabels():
 	#font settings
 	var dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")
-	dynamic_font.size = 64
+	if(tipo_teste == 2):
+		dynamic_font.size = 200
+	else:
+		dynamic_font.size = 64
 	
 	if ((tipo_teste == 0) or (tipo_teste == 1)):
 		multiLabel(dynamic_font)
@@ -143,6 +137,7 @@ func singleLabel(var dynamic_font):
 	var cor = Helper.translateColor(colors[current])
 	label.set("custom_colors/font_color", cor)
 	label.set("custom_fonts/font", dynamic_font)
+	label.set_position(Vector2(350,150))
 	#get_node(".").add_child(label)
 	current+=1
 
@@ -155,21 +150,21 @@ func finishTest():
 		qtd = 4
 		result = analizeAnswer(qtd, gabarito)
 		PlayerResults.set_j2_result(result)
-		get_tree().change_scene("res://j2_config.tscn")
+		get_tree().change_scene("res://Results.tscn")
 		 
 	elif(nome_teste == "Tutorial: Leitura de Cores"):
 		gabarito = words.duplicate()
 		qtd = 4
 		result = analizeAnswer(qtd, gabarito)
 		PlayerResults.set_j2_result(result)
-		get_tree().change_scene("res://j2_config.tscn")
+		get_tree().change_scene("res://Results.tscn")
 		
 	elif(nome_teste == "Tutorial: Nomeação de Cores"):
 		gabarito = colors.duplicate()
 		qtd = 4
 		result = analizeAnswer(qtd, gabarito)
 		PlayerResults.set_j2_result(result)
-		get_tree().change_scene("res://j2_config.tscn")
+		get_tree().change_scene("res://Results.tscn")
 		
 	elif(nome_teste == "Leitura de Cores"):
 		gabarito = words.duplicate()

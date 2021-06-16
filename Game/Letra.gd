@@ -24,6 +24,6 @@ func _init(var p, var width, var height):
 	file_name = p
 	var aux = p.split('.',true,1)
 	value = aux[0]
-	face = load('res://letter_tiles/PNG/Yellow/'+file_name)
+	face = load('res://letter_tiles/'+file_name)
 	face = get_resized_texture(face,width,height)
 	self.texture = face

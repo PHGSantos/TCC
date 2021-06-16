@@ -33,8 +33,10 @@ func _on_Comecar_pressed():
 		Configuracoes.set_j1_qtd_letras_bateria(l)
 		Configuracoes.set_j1_tempo_exibicao(t)
 		Configuracoes.set_j1_tempo_limite(t2)
+		Configuracoes.set_j1_tipo("Tutorial:CPT")
 		get_tree().change_scene("res://TutorialCPT.tscn")
 	else:
+		Configuracoes.set_j1_tipo("CPT")
 		get_tree().change_scene("res://CPT.tscn")
 
 func _on_Voltar_pressed():
@@ -53,7 +55,7 @@ func showSettings(var b):
 		var parent = get_node(path)
 		for child in parent.get_children(): 
 			child.set_visible(b)
-	print('ok')
+	
 
 
 

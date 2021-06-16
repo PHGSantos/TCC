@@ -8,12 +8,10 @@ var dynamic_font
 var retencao
 var date
 var time
-#const FILE_NAME = "res://Saved Files/game_save.json"
+const FILE_PATH = "res://Saved Files/"
 
 func _ready():
-	var t = OS.get_datetime()
-	date = t["year"]+'/'+t["month"]+'/'+t["day"]
-	time = t["hour"]+':'+t["minute"]+':'+t["second"]
+	get_datetime()
 	
 	dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://OpenDyslexic/OpenDyslexicAlta-Bold.otf")
@@ -25,7 +23,6 @@ func _ready():
 	
 	elif(Configuracoes.current_game == 2):
 		result = PlayerResults.j2_result
-		print(result)
 		displayResultsJ2()
 	
 	elif(Configuracoes.current_game == 3):
@@ -34,7 +31,16 @@ func _ready():
 	else:
 		print("Que jogo é esse?!")
 
+func get_datetime():
+	var t = OS.get_datetime()
+	date = str(t["year"])+'/'+str(t["month"])+'/'+str(t["day"])
+	time = str(t["hour"])+':'+str(t["minute"])+':'+str(t["second"])
+
 func displayResultsJ1():
+	get_node("nome_do_jogo").set_text(Configuracoes.j1_tipo)
+	if(Configuracoes.j1_tipo == 'CPT'):
+		get_node("Salvar").set_visible(true)
+	
 	var label1 = Label.new()
 	label1.set_text("Tempo de jogo (seg.): "+str(result[0]))
 	label1.set("custom_fonts/font", dynamic_font)
@@ -57,6 +63,11 @@ func displayResultsJ1():
 	grid.add_child(label4)
 
 func displayResultsJ2():
+	get_node("nome_do_jogo").set_text(Configuracoes.j2_nome_teste)
+	
+	if(Configuracoes.j2_tipo_teste == 2):
+		get_node("Salvar").set_visible(true)
+
 	var label1 = Label.new()
 	label1.set_text("Tempo de jogo (seg.): "+str(result[0]))
 	label1.set("custom_fonts/font", dynamic_font)
@@ -70,7 +81,7 @@ func displayResultsJ2():
 	label3.set("custom_fonts/font", dynamic_font)
 	
 	var label4 = Label.new()
-	label4.set_text("Tempo de erros: "+str(result[3]))
+	label4.set_text("Total de erros: "+str(result[3]))
 	label4.set("custom_fonts/font", dynamic_font)
 	
 	grid.add_child(label1)
@@ -79,6 +90,11 @@ func displayResultsJ2():
 	grid.add_child(label4)
 
 func displayResultsJ3():
+	get_node("nome_do_jogo").set_text(Configuracoes.j3_tipo)
+	
+	if(Configuracoes.j3_tipo == 'TOMM'):
+		get_node("Salvar").set_visible(true)
+	
 	var stage = Configuracoes.j3_stage
 	if(stage == 1):
 		result = PlayerResults.j3_result_etapa1
@@ -126,57 +142,69 @@ func isRetencao():
 	var r1 = PlayerResults.j3_result_etapa1.duplicate()
 	var r2 = PlayerResults.j3_result_etapa2.duplicate()
 	
-	print('r1 = '+  str(r1[2]))
-	print('r2 = '+  str(r2[2]))
 	var total_imgs = Configuracoes.j3_qtd_imagens
 	if((r1[2]+r2[2]) >= 0.44*total_imgs):
 		return false
 	else:
 		return  true
 
+func updateConfig(var settings, var test):
+	var c = settings[test].save_number
+	c+=1
+	settings[test].save_number = c
+	save(settings, 'res://Saved Files/config.json')
+
 func _on_Salvar_pressed():
+	var settings = load_file()
+	var FILE_NAME
+	var count
 	var content = ''
 	if(Configuracoes.current_game == 1):
-		content = {
-		"save_number": 0,
+		FILE_NAME = settings['CPT'].file_name+str(settings['CPT'].save_number);
+		content = { 
 		"Game": {
-			"test_name": "Conners Performance Test",
-			"time": result[0],
+			"test_name": "Conners Performance Test (CPT3)",
+			"date_time": date + ' at ' + time,
+			"playing_time": result[0],
 			"hits": result[1],
 			"errors": result[2],
 			"omission_errors": result[3]
 			}
-	}
+		}
+		save(content, FILE_PATH+FILE_NAME+'.json')
+		updateConfig(settings, 'CPT')
 	
 	elif(Configuracoes.current_game == 2):
+		FILE_NAME = settings['STROOP'].file_name+str(settings['STROOP'].save_number);
 		content = {
-		"save_number": 0,
 		"Game": {
 			"test_name": "Teste de Stroop",
-			"time": result[0],
+			"date_time": date + ' at ' + time,
+			"playing_time": result[0],
 			"hits": result[1],
 			"errors": result[2],
 			"omission_errors": result[3]
 			}
-	}
-	
+		}
+		save(content, FILE_PATH+FILE_NAME+'.json')
+		updateConfig(settings, 'STROOP')
 	else:
+		FILE_NAME = settings['TOMM'].file_name+str(settings['TOMM'].save_number);
 		content = {
-		"save_number": 0,
 		"Game": {
 			"test_name": "Test Of Memory Malingering",
-			"time": result[0],
+			"date_time": date + ' at ' + time,
+			"playing_time": result[0],
 			"hits": result[1],
 			"errors": result[2],
 			"omission_errors": result[3]
 			}
-	}
-	
-	save(content)
-	load_file()
+		}
+		save(content, FILE_PATH+FILE_NAME+'.json')
+		updateConfig(settings, 'TOMM')
 
-func save(var content):
-	var FILE_NAME = "res://Saves Files/game_result.json";
+func save(var content, var FILE_NAME):
+	
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
 	file.store_string(to_json(content))
@@ -184,7 +212,7 @@ func save(var content):
 
 func load_file():
 	var content
-	var FILE_NAME = "res://Saves Files/game_result.json";
+	var FILE_NAME = "res://Saved Files/config.json";
 	var file = File.new()
 	if file.file_exists(FILE_NAME):
 		file.open(FILE_NAME, File.READ)
@@ -192,8 +220,10 @@ func load_file():
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
 			content = data
-			print(content)
+			
+			return content
 		else:
+			
 			printerr("Corrupted data!")
 	else:
 		printerr("No saved data!")

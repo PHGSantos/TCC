@@ -32,15 +32,16 @@ __meta__ = {
 }
 
 [node name="grid" type="VBoxContainer" parent="."]
-margin_left = 238.416
+margin_left = 123.416
 margin_top = 164.049
-margin_right = 1088.42
+margin_right = 973.42
 margin_bottom = 564.049
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Salvar" type="TextureButton" parent="."]
+visible = false
 margin_left = 251.73
 margin_top = 581.058
 margin_right = 441.73

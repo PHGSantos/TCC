@@ -8,12 +8,12 @@ var displayValueSec = 0
 var displayValueMin  = 0
 var changer
 var letra
-#onready var qtd_bateria = 18
-#onready var qtd_letras = 20
-#onready var tempo_exibicao = 2
-onready var qtd_bateria = 2
-onready var qtd_letras = 3
-onready var tempo_exibicao = 4
+onready var qtd_bateria = 18
+onready var qtd_letras = 20
+onready var tempo_exibicao = 2
+#onready var qtd_bateria = Configuracoes.j1_qtd_baterias
+#onready var qtd_letras = Configuracoes.j1_qtd_letras_bateria
+#onready var tempo_exibicao = Configuracoes.j1_tempo_exibicao
 var hits = 0
 var errors = 0
 var omission_errors = 0
@@ -47,12 +47,27 @@ func display_letra(var l):
 	time_start = OS.get_unix_time()
 
 func updateBateria(var n):
-	var path = 'res://letter_tiles/PNG/Yellow/'
+	var path = 'res://letter_tiles/'
 	var array = Helper.list_files_in_directory(path)
 	randomize()
 	array.shuffle()
 	letter_queue = array.slice(0, qtd_letras-1, 1, false)
+	var ok = checkTargetLetter()
+	if(ok == false):
+		fixLetterQueue()
 	get_node("PlayerArea/bateria/b_num").set_text(str(n))
+
+func checkTargetLetter():
+	var counter = 0
+	for letter in letter_queue:
+		if(letter == 'letter_X.png'):
+			return true
+	return false
+
+func fixLetterQueue():
+	var rng = Helper.get_random_number(0, letter_queue.size() -1)
+	letter_queue[rng] = 'letter_X.png'
+	print(letter_queue)
 
 func _on_Timer_timeout():
 	displayValueSec+=1
@@ -90,6 +105,7 @@ func _input(ev):
 		
 
 func checkGameState(var source):
+	checkAnswer(source)
 	if(letter_queue.empty()):
 		bateria_Atual += 1
 		if(bateria_Atual > qtd_bateria):
@@ -101,7 +117,6 @@ func checkGameState(var source):
 			updateBateria(bateria_Atual)
 			updateImageQueue()
 	else:
-		checkAnswer(source)
 		updateImageQueue()
 		
 func checkAnswer(var source):
@@ -122,6 +137,10 @@ func get_played_time():
 	var m = displayValueMin
 	if(s < 10):
 		s = "0"+str(displayValueSec)
+	else:
+		s = str(displayValueSec)
 	if(m < 10):
 		m = "0"+str(displayValueMin)
+	else:
+		m = str(displayValueMin)
 	return m+":"+s

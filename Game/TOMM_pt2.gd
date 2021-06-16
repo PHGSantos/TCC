@@ -7,7 +7,7 @@ onready var minute = get_node("PlayerArea/min")
 var displayValueSec = 0
 var displayValueMin  = 0
 #onready var tempo_limite = Configuracoes.j3_tempo_limite
-var points = 0
+var img_number = 1
 var study
 var other
 var images
@@ -44,15 +44,15 @@ func updateImageQueue():
 		else:
 			PlayerResults.set_j3_result_retencao(result)
 		
-		if(Configuracoes.j3_tipo == "TOMM"):
-			get_tree().change_scene("res://Results.tscn")
-		else:
-			get_tree().change_scene("res://j3_config.tscn")
+		#if(Configuracoes.j3_tipo == "TOMM"):
+		get_tree().change_scene("res://Results.tscn")
+		#else:
+		#	get_tree().change_scene("res://j3_config.tscn")
 	else:	
 		var a = study.pop_front()
 		var b = other.pop_front()
 		if(a == null or b == null):
-			print(a+"/"+b)
+			printerr('null element in the image sets')
 		else:
 			display_images(a,b)
 
@@ -77,8 +77,8 @@ func analizeAnswer():
 
 
 func display_images(var a, var b):
-	print(a)
-	print(b)
+	get_node("PlayerArea/qtd_pts").set_text(str(img_number))
+	img_number+=1
 	if (images.get_child_count() > 0):
 		for child in images.get_children():
 			child.queue_free()
@@ -93,7 +93,6 @@ func display_images(var a, var b):
 	images.add_child(img2)
 	
 	var rng = Helper.get_random_number(0,10)
-	print(str(rng))
 	if(rng%2==0): ##se o rng for par study:esq other:dir
 		img1.set_position(pos_esquerda,false)
 		img2.set_position(pos_direita,false)
@@ -102,6 +101,7 @@ func display_images(var a, var b):
 		img1.set_position(pos_direita,false)
 		img2.set_position(pos_esquerda,false)
 		gabarito.append("Direita")
+		
 
 func imageTrigger(var curr_Value, var ref_value, var interval):
 	if((curr_Value - ref_value) == interval):

@@ -22,6 +22,8 @@ func add_items():
 		dropdown.add_item(test_name)
 	
 	dropdown.select(0) #default
+	selected = 'Tutorial:TOMM'
+
 
 func _on_Comecar_pressed():
 	
@@ -41,7 +43,6 @@ func _on_Comecar_pressed():
 
 
 func _on_Voltar_pressed():
-	sprite2.modulate = Color(0.5,0.5,0.5)
 	get_tree().change_scene("res://MenuPrincipal.tscn")
 
 func createImageSets1(var size):
@@ -57,9 +58,6 @@ func createImageSets1(var size):
 	study_set = arr.slice(0,half-1)
 	other_set = arr.slice(half, size-1)
 	
-	#print(study_set)
-	#print(other_set)
-	
 	randomize()
 	Configuracoes.set_j3_study_set(study_set)
 	randomize()
@@ -67,13 +65,12 @@ func createImageSets1(var size):
 	Configuracoes.set_j3_tipo(selected)
 	
 func createImageSets(var total_imgs):
-	var path = 'res://Memo/'
+	var path = 'res://outlined_imgs/'
 	var array = Helper.list_files_in_directory(path)
 	#garantindo numero par de imagens no vetor
-	print(array.size())
 	if(array.size() < total_imgs):
 		error = true;
-		get_node("erro").set_text('A pasta Memo deve ter pelo menos '+str(total_imgs)+' imagens')
+		get_node("erro").set_text('A pasta outlined_imgs deve ter pelo menos '+str(total_imgs)+' imagens')
 		get_node("erro").set_visible(error)
 	else:
 		error = false
@@ -101,8 +98,8 @@ func _on_dropdown_item_selected(index):
 	if(index == 0):
 		showSettings(true)
 		selected = "Tutorial: TOMM"
-		var files=Helper.list_files_in_directory("res://Memo")
-		print(files)
+		var files=Helper.list_files_in_directory("res://outlined_imgs")
+		
 	else:
 		showSettings(false)
 		selected = "TOMM"
@@ -113,4 +110,4 @@ func showSettings(var b):
 		var parent = get_node(path)
 		for child in parent.get_children(): 
 			child.set_visible(b)
-	print('ok')
+	
